@@ -16,47 +16,47 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals(-1, SerialDate.stringToWeekdayCode("Hello"));
         assertEquals(SerialDate.MONDAY, SerialDate.stringToWeekdayCode("Monday"));
         assertEquals(SerialDate.MONDAY, SerialDate.stringToWeekdayCode("Mon"));
-        // todo assertEquals(SerialDate.MONDAY,SerialDate.stringToWeekdayCode("monday"));
-        // assertEquals(SerialDate.MONDAY,SerialDate.stringToWeekdayCode("SerialDate.MONDAY"));
-        // assertEquals(SerialDate.MONDAY, SerialDate.stringToWeekdayCode("mon"));
+        assertEquals(SerialDate.MONDAY,SerialDate.stringToWeekdayCode("monday"));
+        assertEquals(SerialDate.MONDAY,SerialDate.stringToWeekdayCode("MONDAY"));
+        assertEquals(SerialDate.MONDAY, SerialDate.stringToWeekdayCode("mon"));
 
         assertEquals(SerialDate.TUESDAY, SerialDate.stringToWeekdayCode("Tuesday"));
         assertEquals(SerialDate.TUESDAY, SerialDate.stringToWeekdayCode("Tue"));
-        // assertEquals(SerialDate.TUESDAY,SerialDate.stringToWeekdayCode("tuesday"));
-        // assertEquals(SerialDate.TUESDAY,SerialDate.stringToWeekdayCode("SerialDate.TUESDAY"));
-        // assertEquals(SerialDate.TUESDAY, SerialDate.stringToWeekdayCode("tue"));
-        // assertEquals(SerialDate.TUESDAY, SerialDate.stringToWeekdayCode("tues"));
+        assertEquals(SerialDate.TUESDAY,SerialDate.stringToWeekdayCode("tuesday"));
+        assertEquals(SerialDate.TUESDAY,SerialDate.stringToWeekdayCode("TUESDAY"));
+        assertEquals(SerialDate.TUESDAY, SerialDate.stringToWeekdayCode("tue"));
+        //assertEquals(SerialDate.TUESDAY, SerialDate.stringToWeekdayCode("tues"));
 
         assertEquals(SerialDate.WEDNESDAY, SerialDate.stringToWeekdayCode("Wednesday"));
         assertEquals(SerialDate.WEDNESDAY, SerialDate.stringToWeekdayCode("Wed"));
-        // assertEquals(SerialDate.WEDNESDAY,SerialDate.stringToWeekdayCode("wednesday"));
-        // assertEquals(SerialDate.WEDNESDAY,SerialDate.stringToWeekdayCode("SerialDate.WEDNESDAY"));
-        // assertEquals(SerialDate.WEDNESDAY, SerialDate.stringToWeekdayCode("wed"));
+        assertEquals(SerialDate.WEDNESDAY,SerialDate.stringToWeekdayCode("wednesday"));
+        assertEquals(SerialDate.WEDNESDAY,SerialDate.stringToWeekdayCode("WEDNESDAY"));
+        assertEquals(SerialDate.WEDNESDAY, SerialDate.stringToWeekdayCode("wed"));
 
         assertEquals(SerialDate.THURSDAY, SerialDate.stringToWeekdayCode("Thursday"));
         assertEquals(SerialDate.THURSDAY, SerialDate.stringToWeekdayCode("Thu"));
-        // assertEquals(SerialDate.THURSDAY,SerialDate.stringToWeekdayCode("thursday"));
-        // assertEquals(SerialDate.THURSDAY,SerialDate.stringToWeekdayCode("SerialDate.THURSDAY"));
-        // assertEquals(SerialDate.THURSDAY, SerialDate.stringToWeekdayCode("thu"));
-        // assertEquals(SerialDate.THURSDAY, SerialDate.stringToWeekdayCode("thurs"));
+        assertEquals(SerialDate.THURSDAY,SerialDate.stringToWeekdayCode("thursday"));
+        assertEquals(SerialDate.THURSDAY,SerialDate.stringToWeekdayCode("THURSDAY"));
+        assertEquals(SerialDate.THURSDAY, SerialDate.stringToWeekdayCode("thu"));
+        //assertEquals(SerialDate.THURSDAY, SerialDate.stringToWeekdayCode("thurs"));
 
         assertEquals(SerialDate.FRIDAY, SerialDate.stringToWeekdayCode("Friday"));
         assertEquals(SerialDate.FRIDAY, SerialDate.stringToWeekdayCode("Fri"));
-        // assertEquals(SerialDate.FRIDAY,SerialDate.stringToWeekdayCode("friday"));
-        // assertEquals(SerialDate.FRIDAY,SerialDate.stringToWeekdayCode("SerialDate.FRIDAY"));
-        // assertEquals(SerialDate.FRIDAY, SerialDate.stringToWeekdayCode("fri"));
+        assertEquals(SerialDate.FRIDAY,SerialDate.stringToWeekdayCode("friday"));
+        assertEquals(SerialDate.FRIDAY,SerialDate.stringToWeekdayCode("FRIDAY"));
+        assertEquals(SerialDate.FRIDAY, SerialDate.stringToWeekdayCode("fri"));
 
         assertEquals(SerialDate.SATURDAY, SerialDate.stringToWeekdayCode("Saturday"));
         assertEquals(SerialDate.SATURDAY, SerialDate.stringToWeekdayCode("Sat"));
-        // assertEquals(SerialDate.SATURDAY,SerialDate.stringToWeekdayCode("saturday"));
-        // assertEquals(SerialDate.SATURDAY,SerialDate.stringToWeekdayCode("SerialDate.SATURDAY"));
-        // assertEquals(SerialDate.SATURDAY, SerialDate.stringToWeekdayCode("sat"));
+        assertEquals(SerialDate.SATURDAY,SerialDate.stringToWeekdayCode("saturday"));
+        assertEquals(SerialDate.SATURDAY,SerialDate.stringToWeekdayCode("SATURDAY"));
+        assertEquals(SerialDate.SATURDAY, SerialDate.stringToWeekdayCode("sat"));
 
         assertEquals(SerialDate.SUNDAY, SerialDate.stringToWeekdayCode("Sunday"));
         assertEquals(SerialDate.SUNDAY, SerialDate.stringToWeekdayCode("Sun"));
-        // assertEquals(SerialDate.SUNDAY,SerialDate.stringToWeekdayCode("sunday"));
-        // assertEquals(SerialDate.SUNDAY,SerialDate.stringToWeekdayCode("SerialDate.SUNDAY"));
-        // assertEquals(SerialDate.SUNDAY, SerialDate.stringToWeekdayCode("sun"));
+        assertEquals(SerialDate.SUNDAY,SerialDate.stringToWeekdayCode("sunday"));
+        assertEquals(SerialDate.SUNDAY,SerialDate.stringToWeekdayCode("SUNDAY"));
+        assertEquals(SerialDate.SUNDAY, SerialDate.stringToWeekdayCode("sun"));
     }
 
     public void testWeekdayCodeToString() throws Exception {
@@ -173,7 +173,7 @@ public class BobsSerialDateTest extends TestCase {
         // assertEquals(2,SerialDate.stringToMonthCode("FEB"));
         // assertEquals(3,SerialDate.stringToMonthCode("MAR"));
         // assertEquals(4,SerialDate.stringToMonthCode("APR"));
-        // assertEquals(5,SerialDate.stringToMonthCode("MonthConstants.MAY"));
+        // assertEquals(5,SerialDate.stringToMonthCode("MAY"));
         // assertEquals(6,SerialDate.stringToMonthCode("JUN"));
         // assertEquals(7,SerialDate.stringToMonthCode("JUL"));
         // assertEquals(8,SerialDate.stringToMonthCode("AUG"));
@@ -195,18 +195,18 @@ public class BobsSerialDateTest extends TestCase {
         // assertEquals(11,SerialDate.stringToMonthCode("november"));
         // assertEquals(12,SerialDate.stringToMonthCode("december"));
 
-        // assertEquals(1,SerialDate.stringToMonthCode("MonthConstants.JANUARY"));
-        // assertEquals(2,SerialDate.stringToMonthCode("MonthConstants.FEBRUARY"));
+        // assertEquals(1,SerialDate.stringToMonthCode("JANUARY"));
+        // assertEquals(2,SerialDate.stringToMonthCode("FEBRUARY"));
         // assertEquals(3,SerialDate.stringToMonthCode("MAR"));
-        // assertEquals(4,SerialDate.stringToMonthCode("MonthConstants.APRIL"));
-        // assertEquals(5,SerialDate.stringToMonthCode("MonthConstants.MAY"));
-        // assertEquals(6,SerialDate.stringToMonthCode("MonthConstants.JUNE"));
-        // assertEquals(7,SerialDate.stringToMonthCode("MonthConstants.JULY"));
-        // assertEquals(8,SerialDate.stringToMonthCode("MonthConstants.AUGUST"));
-        // assertEquals(9,SerialDate.stringToMonthCode("MonthConstants.SEPTEMBER"));
-        // assertEquals(10,SerialDate.stringToMonthCode("MonthConstants.OCTOBER"));
-        // assertEquals(11,SerialDate.stringToMonthCode("MonthConstants.NOVEMBER"));
-        // assertEquals(12,SerialDate.stringToMonthCode("MonthConstants.DECEMBER"));
+        // assertEquals(4,SerialDate.stringToMonthCode("APRIL"));
+        // assertEquals(5,SerialDate.stringToMonthCode("MAY"));
+        // assertEquals(6,SerialDate.stringToMonthCode("JUNE"));
+        // assertEquals(7,SerialDate.stringToMonthCode("JULY"));
+        // assertEquals(8,SerialDate.stringToMonthCode("AUGUST"));
+        // assertEquals(9,SerialDate.stringToMonthCode("SEPTEMBER"));
+        // assertEquals(10,SerialDate.stringToMonthCode("OCTOBER"));
+        // assertEquals(11,SerialDate.stringToMonthCode("NOVEMBER"));
+        // assertEquals(12,SerialDate.stringToMonthCode("DECEMBER"));
     }
 
     public void testIsValidWeekInMonthCode() throws Exception {
