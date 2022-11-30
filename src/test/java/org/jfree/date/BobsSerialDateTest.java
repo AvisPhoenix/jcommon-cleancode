@@ -341,64 +341,44 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals(d(24, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, d(21, MonthConstants.APRIL, 2006)));
         assertEquals(d(24, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, d(22, MonthConstants.APRIL, 2006)));
 
-        // assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(16, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(17, MonthConstants.APRIL,
-        // 2006)));
+        assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(16, MonthConstants.APRIL,2006)));
+        assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(17, MonthConstants.APRIL,2006)));
         assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(18, MonthConstants.APRIL, 2006)));
         assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(19, MonthConstants.APRIL, 2006)));
         assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(20, MonthConstants.APRIL, 2006)));
         assertEquals(d(18, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(21, MonthConstants.APRIL, 2006)));
         assertEquals(d(25, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.TUESDAY, d(22, MonthConstants.APRIL, 2006)));
 
-        // assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(16, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(17, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(18, MonthConstants.APRIL,
-        // 2006)));
+        assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(16, MonthConstants.APRIL, 2006)));
+        assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(17, MonthConstants.APRIL, 2006)));
+        assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(18, MonthConstants.APRIL, 2006)));
         assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(19, MonthConstants.APRIL, 2006)));
         assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(20, MonthConstants.APRIL, 2006)));
         assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(21, MonthConstants.APRIL, 2006)));
         assertEquals(d(19, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.WEDNESDAY, d(22, MonthConstants.APRIL, 2006)));
 
-        // assertEquals(d(13, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(16, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(17, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(18, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(19, MonthConstants.APRIL,
-        // 2006)));
+        assertEquals(d(13, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(16, MonthConstants.APRIL, 2006)));
+        assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(17, MonthConstants.APRIL, 2006)));
+        assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(18, MonthConstants.APRIL, 2006)));
+        assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(19, MonthConstants.APRIL, 2006)));
         assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(20, MonthConstants.APRIL, 2006)));
         assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(21, MonthConstants.APRIL, 2006)));
         assertEquals(d(20, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.THURSDAY, d(22, MonthConstants.APRIL, 2006)));
 
-        // assertEquals(d(14, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(16, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(14, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(17, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(18, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(19, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(20, MonthConstants.APRIL,
-        // 2006)));
+        assertEquals(d(14, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(16, MonthConstants.APRIL, 2006)));
+        assertEquals(d(14, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(17, MonthConstants.APRIL, 2006)));
+        assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(18, MonthConstants.APRIL, 2006)));
+        assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(19, MonthConstants.APRIL, 2006)));
+        assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(20, MonthConstants.APRIL, 2006)));
         assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(21, MonthConstants.APRIL, 2006)));
         assertEquals(d(21, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.FRIDAY, d(22, MonthConstants.APRIL, 2006)));
 
-        // assertEquals(d(15, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(16, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(15, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(17, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(15, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(18, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(22, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(19, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(22, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(20, MonthConstants.APRIL,
-        // 2006)));
-        // assertEquals(d(22, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(21, MonthConstants.APRIL,
-        // 2006)));
+        assertEquals(d(15, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(16, MonthConstants.APRIL, 2006)));
+        assertEquals(d(15, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(17, MonthConstants.APRIL, 2006)));
+        assertEquals(d(15, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(18, MonthConstants.APRIL, 2006)));
+        assertEquals(d(22, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(19, MonthConstants.APRIL, 2006)));
+        assertEquals(d(22, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(20, MonthConstants.APRIL, 2006)));
+        assertEquals(d(22, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(21, MonthConstants.APRIL, 2006)));
         assertEquals(d(22, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SATURDAY, d(22, MonthConstants.APRIL, 2006)));
 
         try {
