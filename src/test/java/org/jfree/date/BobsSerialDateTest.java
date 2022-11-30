@@ -333,8 +333,7 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals(d(23, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SUNDAY, d(21, MonthConstants.APRIL, 2006)));
         assertEquals(d(23, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.SUNDAY, d(22, MonthConstants.APRIL, 2006)));
 
-        // todo assertEquals(d(17, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, d(16,
-        // MonthConstants.APRIL, 2006)));
+        assertEquals(d(17, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, d(16,MonthConstants.APRIL, 2006)));
         assertEquals(d(17, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, d(17, MonthConstants.APRIL, 2006)));
         assertEquals(d(17, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, d(18, MonthConstants.APRIL, 2006)));
         assertEquals(d(17, MonthConstants.APRIL, 2006), SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, d(19, MonthConstants.APRIL, 2006)));
