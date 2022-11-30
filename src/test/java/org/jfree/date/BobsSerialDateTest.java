@@ -432,11 +432,11 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals("Fourth", SerialDate.weekInMonthToString(SerialDate.FOURTH_WEEK_IN_MONTH));
         assertEquals("Last", SerialDate.weekInMonthToString(SerialDate.LAST_WEEK_IN_MONTH));
 
-        // todo try {
-        // SerialDate.weekInMonthToString(-1);
-        // fail("Invalid week code should throw exception");
-        // } catch (IllegalArgumentException e) {
-        // }
+        try {
+            SerialDate.weekInMonthToString(-1);
+            fail("Invalid week code should throw exception");
+        } catch (IllegalArgumentException e) {
+        }
     }
 
     public void testRelativeToString() throws Exception {
@@ -444,11 +444,11 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals("Nearest", SerialDate.relativeToString(SerialDate.NEAREST));
         assertEquals("Following", SerialDate.relativeToString(SerialDate.FOLLOWING));
 
-        // todo try {
-        // SerialDate.relativeToString(-1000);
-        // fail("Invalid relative code should throw exception");
-        // } catch (IllegalArgumentException e) {
-        // }
+        try {
+            SerialDate.relativeToString(-1000);
+            fail("Invalid relative code should throw exception");
+        } catch (IllegalArgumentException e) {
+        }
     }
 
 }
