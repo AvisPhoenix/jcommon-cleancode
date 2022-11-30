@@ -313,8 +313,7 @@ public class BobsSerialDateTest extends TestCase {
     }
 
     public void testGetFollowingDayOfWeek() throws Exception {
-        // assertEquals(d(1, MonthConstants.JANUARY, 2005),SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, d(25,
-        // MonthConstants.DECEMBER, 2004)));
+        assertEquals(d(1, MonthConstants.JANUARY, 2005),SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, d(25,MonthConstants.DECEMBER, 2004)));
         assertEquals(d(1, MonthConstants.JANUARY, 2005), SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, d(26, MonthConstants.DECEMBER, 2004)));
         assertEquals(d(3, MonthConstants.MARCH, 2004), SerialDate.getFollowingDayOfWeek(SerialDate.WEDNESDAY, d(28, MonthConstants.FEBRUARY, 2004)));
 
