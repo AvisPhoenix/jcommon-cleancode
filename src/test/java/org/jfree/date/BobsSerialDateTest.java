@@ -146,8 +146,8 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals(MonthConstants.NOVEMBER, SerialDate.stringToMonthCode("11"));
         assertEquals(MonthConstants.DECEMBER, SerialDate.stringToMonthCode("12"));
 
-        // todo assertEquals(-1, SerialDate.stringToMonthCode("0"));
-        // assertEquals(-1, SerialDate.stringToMonthCode("13"));
+        assertEquals(-1, SerialDate.stringToMonthCode("0"));
+        assertEquals(-1, SerialDate.stringToMonthCode("13"));
 
         assertEquals(-1, SerialDate.stringToMonthCode("Hello"));
 
