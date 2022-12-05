@@ -66,8 +66,7 @@ import java.util.GregorianCalendar;
  */
 public abstract class DayDate implements Comparable, 
                                          Serializable {
-
-    public static enum Month {
+    public enum Month {
         JANUARY(1),
         FEBRUARY(2),
         MARCH(3),
@@ -94,7 +93,7 @@ public abstract class DayDate implements Comparable,
         }
 
         public final int index;
-    }      
+    };
                                             
     /** For serialization. */
     private static final long serialVersionUID = -293716040467423637L;
@@ -332,26 +331,8 @@ public abstract class DayDate implements Comparable,
      * @return <code>true</code> if the supplied integer code represents a 
      *         valid month.
      */
-    public static boolean isValidMonthCode(final int code) {
-
-        switch(code) {
-            case JANUARY: 
-            case FEBRUARY: 
-            case MARCH: 
-            case APRIL: 
-            case MAY: 
-            case JUNE: 
-            case JULY: 
-            case AUGUST: 
-            case SEPTEMBER: 
-            case OCTOBER: 
-            case NOVEMBER: 
-            case DECEMBER: 
-                return true;
-            default: 
-                return false;
-        }
-
+    public static boolean isValidMonthCode(final Month month) {
+        return 1 <= month.index && month.index <=12;
     }
 
     /**
@@ -361,25 +342,10 @@ public abstract class DayDate implements Comparable,
      *
      * @return the quarter that the month belongs to.
      */
-    public static int monthCodeToQuarter(final int code) {
+    public static int monthCodeToQuarter(final Month month) {
+        if (!isValidMonthCode(month)) throw new IllegalArgumentException("SerialDate.monthCodeToQuarter: invalid month code.");
 
-        switch(code) {
-            case JANUARY: 
-            case FEBRUARY: 
-            case MARCH: return 1;
-            case APRIL: 
-            case MAY: 
-            case JUNE: return 2;
-            case JULY: 
-            case AUGUST: 
-            case SEPTEMBER: return 3;
-            case OCTOBER: 
-            case NOVEMBER: 
-            case DECEMBER: return 4;
-            default: throw new IllegalArgumentException(
-                "SerialDate.monthCodeToQuarter: invalid month code.");
-        }
-
+        return month.index%3 + 1;
     }
 
     /**
@@ -392,7 +358,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return a string representing the supplied month.
      */
-    public static String monthCodeToString(final int month) {
+    public static String monthCodeToString(final Month month) {
 
         return monthCodeToString(month, false);
 
@@ -410,7 +376,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return a string representing the supplied month.
      */
-    public static String monthCodeToString(final int month, 
+    public static String monthCodeToString(final Month month, 
                                            final boolean shortened) {
 
         // check arguments...
@@ -428,7 +394,7 @@ public abstract class DayDate implements Comparable,
             months = DATE_FORMAT_SYMBOLS.getMonths();
         }
 
-        return months[month - 1];
+        return months[month.index - 1];
 
     }
 
@@ -487,9 +453,9 @@ public abstract class DayDate implements Comparable,
      * @return <code>true</code> if the supplied integer code represents a 
      *         valid week-in-the-month.
      */
-    public static boolean isValidWeekInMonthCode(final int code) {
+    public static boolean isValidWeekInMonthCode(final Month month) {
 
-        switch(code) {
+        switch(month.index) {
             case FIRST_WEEK_IN_MONTH: 
             case SECOND_WEEK_IN_MONTH: 
             case THIRD_WEEK_IN_MONTH: 
@@ -552,10 +518,10 @@ public abstract class DayDate implements Comparable,
      *
      * @return the number of the last day of the month.
      */
-    public static int lastDayOfMonth(final int month, final int yyyy) {
+    public static int lastDayOfMonth(final Month month, final int yyyy) {
 
-        final int result = LAST_DAY_OF_MONTH[month];
-        if (month != FEBRUARY) {
+        final int result = LAST_DAY_OF_MONTH[month.index];
+        if (month.index != 2) {
             return result;
         }
         else if (isLeapYear(yyyy)) {
@@ -598,10 +564,10 @@ public abstract class DayDate implements Comparable,
     public static DayDate addMonths(final int months, 
                                        final DayDate base) {
 
-        final int yy = (12 * base.getYYYY() + base.getMonth() + months - 1) 
+        final int yy = (12 * base.getYYYY() + base.getMonth().index + months - 1) 
                        / 12;
-        final int mm = (12 * base.getYYYY() + base.getMonth() + months - 1) 
-                       % 12 + 1;
+        final Month mm = Month.make((12 * base.getYYYY() + base.getMonth().index + months - 1) 
+                       % 12 + 1);
         final int dd = Math.min(
             base.getDayOfMonth(), DayDate.lastDayOfMonth(mm, yy)
         );
@@ -621,7 +587,7 @@ public abstract class DayDate implements Comparable,
     public static DayDate addYears(final int years, final DayDate base) {
 
         final int baseY = base.getYYYY();
-        final int baseM = base.getMonth();
+        final Month baseM = base.getMonth();
         final int baseD = base.getDayOfMonth();
 
         final int targetY = baseY + years;
@@ -796,9 +762,9 @@ public abstract class DayDate implements Comparable,
      *
      * @return An instance of {@link DayDate}.
      */
-    public static DayDate createInstance(final int day, final int month, 
+    public static DayDate createInstance(final int day, final Month month, 
                                             final int yyyy) {
-        return new SpreadsheetDate(day, month, yyyy);
+        return new SpreadsheetDate(day, month.index, yyyy);
     }
 
     /**
@@ -890,7 +856,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return the month of the year.
      */
-    public abstract int getMonth();
+    public abstract Month getMonth();
 
     /**
      * Returns the day of the month.
