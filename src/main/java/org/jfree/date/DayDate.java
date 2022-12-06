@@ -93,20 +93,16 @@ public abstract class DayDate implements Comparable,
         }
 
         public final int index;
-    };
-                                            
-    /** For serialization. */
-    private static final long serialVersionUID = -293716040467423637L;
+    }
     
-    /** Date format symbols. */
     public static final DateFormatSymbols
         DATE_FORMAT_SYMBOLS = new SimpleDateFormat().getDateFormatSymbols();
 
-    /** The serial number for 1 January 1900. */
-    public static final int SERIAL_LOWER_BOUND = 2;
+    /** 1 January 1900. */
+    public static final int EARLIEST_DATE_ORDINAL = 2;
 
-    /** The serial number for 31 December 9999. */
-    public static final int SERIAL_UPPER_BOUND = 2958465;
+    /** 31 December 9999. */
+    public static final int LASTEST_DATE_ORDINAL = 2958465;
 
     /** The lowest year value supported by this date format. */
     public static final int MINIMUM_YEAR_SUPPORTED = 1900;
@@ -331,7 +327,7 @@ public abstract class DayDate implements Comparable,
      * @return the quarter that the month belongs to.
      */
     public static int monthCodeToQuarter(final Month month) {
-        return month.index%3 + 1;
+        return (int) Math.ceil(month.index/3.0);
     }
 
     /**
@@ -743,7 +739,7 @@ public abstract class DayDate implements Comparable,
      */
     public static DayDate createInstance(final int day, final Month month, 
                                             final int yyyy) {
-        return new SpreadsheetDate(day, month.index, yyyy);
+        return new SpreadsheetDate(day, month, yyyy);
     }
 
     /**
@@ -770,7 +766,7 @@ public abstract class DayDate implements Comparable,
         final GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         return new SpreadsheetDate(calendar.get(Calendar.DATE),
-                                   calendar.get(Calendar.MONTH) + 1,
+                                   Month.make(calendar.get(Calendar.MONTH) + 1),
                                    calendar.get(Calendar.YEAR));
 
     }

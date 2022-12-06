@@ -69,63 +69,56 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals("Saturday", DayDate.weekdayCodeToString(DayDate.SATURDAY));
     }
 
-    public void testIsValidMonthCode() throws Exception {
-        for (int i = 1; i <= 12; i++)
-            assertTrue(DayDate.isValidMonthCode(i));
-        assertFalse(DayDate.isValidMonthCode(0));
-        assertFalse(DayDate.isValidMonthCode(13));
-    }
-
     public void testMonthToQuarter() throws Exception {
-        assertEquals(1, DayDate.monthCodeToQuarter(MonthConstants.JANUARY));
-        assertEquals(1, DayDate.monthCodeToQuarter(MonthConstants.FEBRUARY));
-        assertEquals(1, DayDate.monthCodeToQuarter(MonthConstants.MARCH));
-        assertEquals(2, DayDate.monthCodeToQuarter(MonthConstants.APRIL));
-        assertEquals(2, DayDate.monthCodeToQuarter(MonthConstants.MAY));
-        assertEquals(2, DayDate.monthCodeToQuarter(MonthConstants.JUNE));
-        assertEquals(3, DayDate.monthCodeToQuarter(MonthConstants.JULY));
-        assertEquals(3, DayDate.monthCodeToQuarter(MonthConstants.AUGUST));
-        assertEquals(3, DayDate.monthCodeToQuarter(MonthConstants.SEPTEMBER));
-        assertEquals(4, DayDate.monthCodeToQuarter(MonthConstants.OCTOBER));
-        assertEquals(4, DayDate.monthCodeToQuarter(MonthConstants.NOVEMBER));
-        assertEquals(4, DayDate.monthCodeToQuarter(MonthConstants.DECEMBER));
+        assertEquals(1, DayDate.monthCodeToQuarter(DayDate.Month.JANUARY));
+        assertEquals(1, DayDate.monthCodeToQuarter(DayDate.Month.FEBRUARY));
+        assertEquals(1, DayDate.monthCodeToQuarter(DayDate.Month.MARCH));
+        assertEquals(2, DayDate.monthCodeToQuarter(DayDate.Month.APRIL));
+        assertEquals(2, DayDate.monthCodeToQuarter(DayDate.Month.MAY));
+        assertEquals(2, DayDate.monthCodeToQuarter(DayDate.Month.JUNE));
+        assertEquals(3, DayDate.monthCodeToQuarter(DayDate.Month.JULY));
+        assertEquals(3, DayDate.monthCodeToQuarter(DayDate.Month.AUGUST));
+        assertEquals(3, DayDate.monthCodeToQuarter(DayDate.Month.SEPTEMBER));
+        assertEquals(4, DayDate.monthCodeToQuarter(DayDate.Month.OCTOBER));
+        assertEquals(4, DayDate.monthCodeToQuarter(DayDate.Month.NOVEMBER));
+        assertEquals(4, DayDate.monthCodeToQuarter(DayDate.Month.DECEMBER));
 
         try {
-            DayDate.monthCodeToQuarter(-1);
+            DayDate.Month.make(-1);
             fail("Invalid Month Code should throw exception");
         } catch (IllegalArgumentException e) {
         }
     }
 
     public void testMonthCodeToString() throws Exception {
-        assertEquals("January", DayDate.monthCodeToString(MonthConstants.JANUARY));
-        assertEquals("February", DayDate.monthCodeToString(MonthConstants.FEBRUARY));
-        assertEquals("March", DayDate.monthCodeToString(MonthConstants.MARCH));
-        assertEquals("April", DayDate.monthCodeToString(MonthConstants.APRIL));
-        assertEquals("May", DayDate.monthCodeToString(MonthConstants.MAY));
-        assertEquals("June", DayDate.monthCodeToString(MonthConstants.JUNE));
-        assertEquals("July", DayDate.monthCodeToString(MonthConstants.JULY));
-        assertEquals("August", DayDate.monthCodeToString(MonthConstants.AUGUST));
-        assertEquals("September", DayDate.monthCodeToString(MonthConstants.SEPTEMBER));
-        assertEquals("October", DayDate.monthCodeToString(MonthConstants.OCTOBER));
-        assertEquals("November", DayDate.monthCodeToString(MonthConstants.NOVEMBER));
-        assertEquals("December", DayDate.monthCodeToString(MonthConstants.DECEMBER));
+        assertEquals("January", DayDate.monthCodeToString(DayDate.Month.JANUARY));
+        assertEquals("February", DayDate.monthCodeToString(DayDate.Month.FEBRUARY));
+        assertEquals("March", DayDate.monthCodeToString(DayDate.Month.MARCH));
+        assertEquals("April", DayDate.monthCodeToString(DayDate.Month.APRIL));
+        assertEquals("May", DayDate.monthCodeToString(DayDate.Month.MAY));
+        assertEquals("June", DayDate.monthCodeToString(DayDate.Month.JUNE));
+        assertEquals("July", DayDate.monthCodeToString(DayDate.Month.JULY));
+        assertEquals("August", DayDate.monthCodeToString(DayDate.Month.AUGUST));
+        assertEquals("September", DayDate.monthCodeToString(DayDate.Month.SEPTEMBER));
+        assertEquals("October", DayDate.monthCodeToString(DayDate.Month.OCTOBER));
+        assertEquals("November", DayDate.monthCodeToString(DayDate.Month.NOVEMBER));
+        assertEquals("December", DayDate.monthCodeToString(DayDate.Month.DECEMBER));
 
-        assertEquals("Jan", DayDate.monthCodeToString(MonthConstants.JANUARY, true));
-        assertEquals("Feb", DayDate.monthCodeToString(MonthConstants.FEBRUARY, true));
-        assertEquals("Mar", DayDate.monthCodeToString(MonthConstants.MARCH, true));
-        assertEquals("Apr", DayDate.monthCodeToString(MonthConstants.APRIL, true));
-        assertEquals("May", DayDate.monthCodeToString(MonthConstants.MAY, true));
-        assertEquals("Jun", DayDate.monthCodeToString(MonthConstants.JUNE, true));
-        assertEquals("Jul", DayDate.monthCodeToString(MonthConstants.JULY, true));
-        assertEquals("Aug", DayDate.monthCodeToString(MonthConstants.AUGUST, true));
-        assertEquals("Sep", DayDate.monthCodeToString(MonthConstants.SEPTEMBER, true));
-        assertEquals("Oct", DayDate.monthCodeToString(MonthConstants.OCTOBER, true));
-        assertEquals("Nov", DayDate.monthCodeToString(MonthConstants.NOVEMBER, true));
-        assertEquals("Dec", DayDate.monthCodeToString(MonthConstants.DECEMBER, true));
+        assertEquals("Jan", DayDate.monthCodeToString(DayDate.Month.JANUARY, true));
+        assertEquals("Feb", DayDate.monthCodeToString(DayDate.Month.FEBRUARY, true));
+        assertEquals("Mar", DayDate.monthCodeToString(DayDate.Month.MARCH, true));
+        assertEquals("Apr", DayDate.monthCodeToString(DayDate.Month.APRIL, true));
+        assertEquals("May", DayDate.monthCodeToString(DayDate.Month.MAY, true));
+        assertEquals("Jun", DayDate.monthCodeToString(DayDate.Month.JUNE, true));
+        assertEquals("Jul", DayDate.monthCodeToString(DayDate.Month.JULY, true));
+        assertEquals("Aug", DayDate.monthCodeToString(DayDate.Month.AUGUST, true));
+        assertEquals("Sep", DayDate.monthCodeToString(DayDate.Month.SEPTEMBER, true));
+        assertEquals("Oct", DayDate.monthCodeToString(DayDate.Month.OCTOBER, true));
+        assertEquals("Nov", DayDate.monthCodeToString(DayDate.Month.NOVEMBER, true));
+        assertEquals("Dec", DayDate.monthCodeToString(DayDate.Month.DECEMBER, true));
 
         try {
-            DayDate.monthCodeToString(-1);
+            DayDate.Month.make(-1);
             fail("Invalid month code should throw exception");
         } catch (IllegalArgumentException e) {
         }
@@ -133,27 +126,27 @@ public class BobsSerialDateTest extends TestCase {
     }
 
     public void testStringToMonthCode() throws Exception {
-        assertEquals(MonthConstants.JANUARY, DayDate.stringToMonthCode("1"));
-        assertEquals(MonthConstants.FEBRUARY, DayDate.stringToMonthCode("2"));
-        assertEquals(MonthConstants.MARCH, DayDate.stringToMonthCode("3"));
-        assertEquals(MonthConstants.APRIL, DayDate.stringToMonthCode("4"));
-        assertEquals(MonthConstants.MAY, DayDate.stringToMonthCode("5"));
-        assertEquals(MonthConstants.JUNE, DayDate.stringToMonthCode("6"));
-        assertEquals(MonthConstants.JULY, DayDate.stringToMonthCode("7"));
-        assertEquals(MonthConstants.AUGUST, DayDate.stringToMonthCode("8"));
-        assertEquals(MonthConstants.SEPTEMBER, DayDate.stringToMonthCode("9"));
-        assertEquals(MonthConstants.OCTOBER, DayDate.stringToMonthCode("10"));
-        assertEquals(MonthConstants.NOVEMBER, DayDate.stringToMonthCode("11"));
-        assertEquals(MonthConstants.DECEMBER, DayDate.stringToMonthCode("12"));
+        assertEquals(DayDate.Month.JANUARY.index, DayDate.stringToMonthCode("1"));
+        assertEquals(DayDate.Month.FEBRUARY.index, DayDate.stringToMonthCode("2"));
+        assertEquals(DayDate.Month.MARCH.index, DayDate.stringToMonthCode("3"));
+        assertEquals(DayDate.Month.APRIL.index, DayDate.stringToMonthCode("4"));
+        assertEquals(DayDate.Month.MAY.index, DayDate.stringToMonthCode("5"));
+        assertEquals(DayDate.Month.JUNE.index, DayDate.stringToMonthCode("6"));
+        assertEquals(DayDate.Month.JULY.index, DayDate.stringToMonthCode("7"));
+        assertEquals(DayDate.Month.AUGUST.index, DayDate.stringToMonthCode("8"));
+        assertEquals(DayDate.Month.SEPTEMBER.index, DayDate.stringToMonthCode("9"));
+        assertEquals(DayDate.Month.OCTOBER.index, DayDate.stringToMonthCode("10"));
+        assertEquals(DayDate.Month.NOVEMBER.index, DayDate.stringToMonthCode("11"));
+        assertEquals(DayDate.Month.DECEMBER.index, DayDate.stringToMonthCode("12"));
 
         assertEquals(-1, DayDate.stringToMonthCode("0"));
         assertEquals(-1, DayDate.stringToMonthCode("13"));
 
         assertEquals(-1, DayDate.stringToMonthCode("Hello"));
 
-        for (int m = 1; m <= 12; m++) {
-            assertEquals(m, DayDate.stringToMonthCode(DayDate.monthCodeToString(m, false)));
-            assertEquals(m, DayDate.stringToMonthCode(DayDate.monthCodeToString(m, true)));
+        for (DayDate.Month m : DayDate.Month.values()) {
+            assertEquals(m.index, DayDate.stringToMonthCode(DayDate.monthCodeToString(m, false)));
+            assertEquals(m.index, DayDate.stringToMonthCode(DayDate.monthCodeToString(m, true)));
         }
 
         assertEquals(1,DayDate.stringToMonthCode("jan"));
@@ -210,10 +203,10 @@ public class BobsSerialDateTest extends TestCase {
     }
 
     public void testIsValidWeekInMonthCode() throws Exception {
-        for (int w = 0; w <= 4; w++) {
-            assertTrue(DayDate.isValidWeekInMonthCode(w));
+        for (int w = 1; w <= 4; w++) {
+            assertTrue(DayDate.isValidWeekInMonthCode(DayDate.Month.make(w)));
         }
-        assertFalse(DayDate.isValidWeekInMonthCode(5));
+        assertFalse(DayDate.isValidWeekInMonthCode(DayDate.Month.make(5)));
     }
 
     public void testIsLeapYear() throws Exception {
@@ -250,139 +243,139 @@ public class BobsSerialDateTest extends TestCase {
     }
 
     public void testLastDayOfMonth() throws Exception {
-        assertEquals(31, DayDate.lastDayOfMonth(MonthConstants.JANUARY, 1901));
-        assertEquals(28, DayDate.lastDayOfMonth(MonthConstants.FEBRUARY, 1901));
-        assertEquals(31, DayDate.lastDayOfMonth(MonthConstants.MARCH, 1901));
-        assertEquals(30, DayDate.lastDayOfMonth(MonthConstants.APRIL, 1901));
-        assertEquals(31, DayDate.lastDayOfMonth(MonthConstants.MAY, 1901));
-        assertEquals(30, DayDate.lastDayOfMonth(MonthConstants.JUNE, 1901));
-        assertEquals(31, DayDate.lastDayOfMonth(MonthConstants.JULY, 1901));
-        assertEquals(31, DayDate.lastDayOfMonth(MonthConstants.AUGUST, 1901));
-        assertEquals(30, DayDate.lastDayOfMonth(MonthConstants.SEPTEMBER, 1901));
-        assertEquals(31, DayDate.lastDayOfMonth(MonthConstants.OCTOBER, 1901));
-        assertEquals(30, DayDate.lastDayOfMonth(MonthConstants.NOVEMBER, 1901));
-        assertEquals(31, DayDate.lastDayOfMonth(MonthConstants.DECEMBER, 1901));
-        assertEquals(29, DayDate.lastDayOfMonth(MonthConstants.FEBRUARY, 1904));
+        assertEquals(31, DayDate.lastDayOfMonth(DayDate.Month.JANUARY, 1901));
+        assertEquals(28, DayDate.lastDayOfMonth(DayDate.Month.FEBRUARY, 1901));
+        assertEquals(31, DayDate.lastDayOfMonth(DayDate.Month.MARCH, 1901));
+        assertEquals(30, DayDate.lastDayOfMonth(DayDate.Month.APRIL, 1901));
+        assertEquals(31, DayDate.lastDayOfMonth(DayDate.Month.MAY, 1901));
+        assertEquals(30, DayDate.lastDayOfMonth(DayDate.Month.JUNE, 1901));
+        assertEquals(31, DayDate.lastDayOfMonth(DayDate.Month.JULY, 1901));
+        assertEquals(31, DayDate.lastDayOfMonth(DayDate.Month.AUGUST, 1901));
+        assertEquals(30, DayDate.lastDayOfMonth(DayDate.Month.SEPTEMBER, 1901));
+        assertEquals(31, DayDate.lastDayOfMonth(DayDate.Month.OCTOBER, 1901));
+        assertEquals(30, DayDate.lastDayOfMonth(DayDate.Month.NOVEMBER, 1901));
+        assertEquals(31, DayDate.lastDayOfMonth(DayDate.Month.DECEMBER, 1901));
+        assertEquals(29, DayDate.lastDayOfMonth(DayDate.Month.FEBRUARY, 1904));
     }
 
     public void testAddDays() throws Exception {
-        DayDate newYears = d(1, MonthConstants.JANUARY, 1900);
-        assertEquals(d(2, MonthConstants.JANUARY, 1900), DayDate.addDays(1, newYears));
-        assertEquals(d(1, MonthConstants.FEBRUARY, 1900), DayDate.addDays(31, newYears));
-        assertEquals(d(1, MonthConstants.JANUARY, 1901), DayDate.addDays(365, newYears));
-        assertEquals(d(31, MonthConstants.DECEMBER, 1904), DayDate.addDays(5 * 365, newYears));
+        DayDate newYears = d(1, DayDate.Month.JANUARY, 1900);
+        assertEquals(d(2, DayDate.Month.JANUARY, 1900), DayDate.addDays(1, newYears));
+        assertEquals(d(1, DayDate.Month.FEBRUARY, 1900), DayDate.addDays(31, newYears));
+        assertEquals(d(1, DayDate.Month.JANUARY, 1901), DayDate.addDays(365, newYears));
+        assertEquals(d(31, DayDate.Month.DECEMBER, 1904), DayDate.addDays(5 * 365, newYears));
     }
 
-    private static SpreadsheetDate d(int day, int month, int year) {
+    private static SpreadsheetDate d(int day, DayDate.Month month, int year) {
         return new SpreadsheetDate(day, month, year);
     }
 
     public void testAddMonths() throws Exception {
-        assertEquals(d(1, MonthConstants.FEBRUARY, 1900), DayDate.addMonths(1, d(1, MonthConstants.JANUARY, 1900)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 1900), DayDate.addMonths(1, d(31, MonthConstants.JANUARY, 1900)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 1900), DayDate.addMonths(1, d(30, MonthConstants.JANUARY, 1900)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 1900), DayDate.addMonths(1, d(29, MonthConstants.JANUARY, 1900)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 1900), DayDate.addMonths(1, d(28, MonthConstants.JANUARY, 1900)));
-        assertEquals(d(27, MonthConstants.FEBRUARY, 1900), DayDate.addMonths(1, d(27, MonthConstants.JANUARY, 1900)));
+        assertEquals(d(1, DayDate.Month.FEBRUARY, 1900), DayDate.addMonths(1, d(1, DayDate.Month.JANUARY, 1900)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 1900), DayDate.addMonths(1, d(31, DayDate.Month.JANUARY, 1900)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 1900), DayDate.addMonths(1, d(30, DayDate.Month.JANUARY, 1900)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 1900), DayDate.addMonths(1, d(29, DayDate.Month.JANUARY, 1900)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 1900), DayDate.addMonths(1, d(28, DayDate.Month.JANUARY, 1900)));
+        assertEquals(d(27, DayDate.Month.FEBRUARY, 1900), DayDate.addMonths(1, d(27, DayDate.Month.JANUARY, 1900)));
 
-        assertEquals(d(30, MonthConstants.JUNE, 1900), DayDate.addMonths(5, d(31, MonthConstants.JANUARY, 1900)));
-        assertEquals(d(30, MonthConstants.JUNE, 1901), DayDate.addMonths(17, d(31, MonthConstants.JANUARY, 1900)));
+        assertEquals(d(30, DayDate.Month.JUNE, 1900), DayDate.addMonths(5, d(31, DayDate.Month.JANUARY, 1900)));
+        assertEquals(d(30, DayDate.Month.JUNE, 1901), DayDate.addMonths(17, d(31, DayDate.Month.JANUARY, 1900)));
 
-        assertEquals(d(29, MonthConstants.FEBRUARY, 1904), DayDate.addMonths(49, d(31, MonthConstants.JANUARY, 1900)));
+        assertEquals(d(29, DayDate.Month.FEBRUARY, 1904), DayDate.addMonths(49, d(31, DayDate.Month.JANUARY, 1900)));
 
     }
 
     public void testAddYears() throws Exception {
-        assertEquals(d(1, MonthConstants.JANUARY, 1901), DayDate.addYears(1, d(1, MonthConstants.JANUARY, 1900)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 1905), DayDate.addYears(1, d(29, MonthConstants.FEBRUARY, 1904)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 1905), DayDate.addYears(1, d(28, MonthConstants.FEBRUARY, 1904)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 1904), DayDate.addYears(1, d(28, MonthConstants.FEBRUARY, 1903)));
+        assertEquals(d(1, DayDate.Month.JANUARY, 1901), DayDate.addYears(1, d(1, DayDate.Month.JANUARY, 1900)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 1905), DayDate.addYears(1, d(29, DayDate.Month.FEBRUARY, 1904)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 1905), DayDate.addYears(1, d(28, DayDate.Month.FEBRUARY, 1904)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 1904), DayDate.addYears(1, d(28, DayDate.Month.FEBRUARY, 1903)));
     }
 
     public void testGetPreviousDayOfWeek() throws Exception {
-        assertEquals(d(24, MonthConstants.FEBRUARY, 2006), DayDate.getPreviousDayOfWeek(DayDate.FRIDAY, d(1, MonthConstants.MARCH, 2006)));
-        assertEquals(d(22, MonthConstants.FEBRUARY, 2006), DayDate.getPreviousDayOfWeek(DayDate.WEDNESDAY, d(1, MonthConstants.MARCH, 2006)));
-        assertEquals(d(29, MonthConstants.FEBRUARY, 2004), DayDate.getPreviousDayOfWeek(DayDate.SUNDAY, d(3, MonthConstants.MARCH, 2004)));
-        assertEquals(d(29, MonthConstants.DECEMBER, 2004), DayDate.getPreviousDayOfWeek(DayDate.WEDNESDAY, d(5, MonthConstants.JANUARY, 2005)));
+        assertEquals(d(24, DayDate.Month.FEBRUARY, 2006), DayDate.getPreviousDayOfWeek(DayDate.FRIDAY, d(1, DayDate.Month.MARCH, 2006)));
+        assertEquals(d(22, DayDate.Month.FEBRUARY, 2006), DayDate.getPreviousDayOfWeek(DayDate.WEDNESDAY, d(1, DayDate.Month.MARCH, 2006)));
+        assertEquals(d(29, DayDate.Month.FEBRUARY, 2004), DayDate.getPreviousDayOfWeek(DayDate.SUNDAY, d(3, DayDate.Month.MARCH, 2004)));
+        assertEquals(d(29, DayDate.Month.DECEMBER, 2004), DayDate.getPreviousDayOfWeek(DayDate.WEDNESDAY, d(5, DayDate.Month.JANUARY, 2005)));
 
         try {
-            DayDate.getPreviousDayOfWeek(-1, d(1, MonthConstants.JANUARY, 2006));
+            DayDate.getPreviousDayOfWeek(-1, d(1, DayDate.Month.JANUARY, 2006));
             fail("Invalid day of week code should throw exception");
         } catch (IllegalArgumentException e) {
         }
     }
 
     public void testGetFollowingDayOfWeek() throws Exception {
-        assertEquals(d(1, MonthConstants.JANUARY, 2005),DayDate.getFollowingDayOfWeek(DayDate.SATURDAY, d(25,MonthConstants.DECEMBER, 2004)));
-        assertEquals(d(1, MonthConstants.JANUARY, 2005), DayDate.getFollowingDayOfWeek(DayDate.SATURDAY, d(26, MonthConstants.DECEMBER, 2004)));
-        assertEquals(d(3, MonthConstants.MARCH, 2004), DayDate.getFollowingDayOfWeek(DayDate.WEDNESDAY, d(28, MonthConstants.FEBRUARY, 2004)));
+        assertEquals(d(1, DayDate.Month.JANUARY, 2005),DayDate.getFollowingDayOfWeek(DayDate.SATURDAY, d(25,DayDate.Month.DECEMBER, 2004)));
+        assertEquals(d(1, DayDate.Month.JANUARY, 2005), DayDate.getFollowingDayOfWeek(DayDate.SATURDAY, d(26, DayDate.Month.DECEMBER, 2004)));
+        assertEquals(d(3, DayDate.Month.MARCH, 2004), DayDate.getFollowingDayOfWeek(DayDate.WEDNESDAY, d(28, DayDate.Month.FEBRUARY, 2004)));
 
         try {
-            DayDate.getFollowingDayOfWeek(-1, d(1, MonthConstants.JANUARY, 2006));
+            DayDate.getFollowingDayOfWeek(-1, d(1, DayDate.Month.JANUARY, 2006));
             fail("Invalid day of week code should throw exception");
         } catch (IllegalArgumentException e) {
         }
     }
 
     public void testGetNearestDayOfWeek() throws Exception {
-        assertEquals(d(16, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(16, MonthConstants.APRIL, 2006)));
-        assertEquals(d(16, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(17, MonthConstants.APRIL, 2006)));
-        assertEquals(d(16, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(18, MonthConstants.APRIL, 2006)));
-        assertEquals(d(16, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(19, MonthConstants.APRIL, 2006)));
-        assertEquals(d(23, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(20, MonthConstants.APRIL, 2006)));
-        assertEquals(d(23, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(21, MonthConstants.APRIL, 2006)));
-        assertEquals(d(23, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(22, MonthConstants.APRIL, 2006)));
+        assertEquals(d(16, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(16, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(16, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(17, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(16, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(18, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(16, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(19, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(23, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(20, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(23, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(21, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(23, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SUNDAY, d(22, DayDate.Month.APRIL, 2006)));
 
-        assertEquals(d(17, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(16,MonthConstants.APRIL, 2006)));
-        assertEquals(d(17, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(17, MonthConstants.APRIL, 2006)));
-        assertEquals(d(17, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(18, MonthConstants.APRIL, 2006)));
-        assertEquals(d(17, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(19, MonthConstants.APRIL, 2006)));
-        assertEquals(d(17, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(20, MonthConstants.APRIL, 2006)));
-        assertEquals(d(24, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(21, MonthConstants.APRIL, 2006)));
-        assertEquals(d(24, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(22, MonthConstants.APRIL, 2006)));
+        assertEquals(d(17, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(16,DayDate.Month.APRIL, 2006)));
+        assertEquals(d(17, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(17, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(17, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(18, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(17, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(19, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(17, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(20, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(24, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(21, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(24, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.MONDAY, d(22, DayDate.Month.APRIL, 2006)));
 
-        assertEquals(d(18, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(16, MonthConstants.APRIL,2006)));
-        assertEquals(d(18, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(17, MonthConstants.APRIL,2006)));
-        assertEquals(d(18, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(18, MonthConstants.APRIL, 2006)));
-        assertEquals(d(18, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(19, MonthConstants.APRIL, 2006)));
-        assertEquals(d(18, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(20, MonthConstants.APRIL, 2006)));
-        assertEquals(d(18, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(21, MonthConstants.APRIL, 2006)));
-        assertEquals(d(25, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(22, MonthConstants.APRIL, 2006)));
+        assertEquals(d(18, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(16, DayDate.Month.APRIL,2006)));
+        assertEquals(d(18, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(17, DayDate.Month.APRIL,2006)));
+        assertEquals(d(18, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(18, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(18, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(19, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(18, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(20, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(18, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(21, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(25, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.TUESDAY, d(22, DayDate.Month.APRIL, 2006)));
 
-        assertEquals(d(19, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(16, MonthConstants.APRIL, 2006)));
-        assertEquals(d(19, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(17, MonthConstants.APRIL, 2006)));
-        assertEquals(d(19, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(18, MonthConstants.APRIL, 2006)));
-        assertEquals(d(19, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(19, MonthConstants.APRIL, 2006)));
-        assertEquals(d(19, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(20, MonthConstants.APRIL, 2006)));
-        assertEquals(d(19, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(21, MonthConstants.APRIL, 2006)));
-        assertEquals(d(19, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(22, MonthConstants.APRIL, 2006)));
+        assertEquals(d(19, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(16, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(19, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(17, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(19, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(18, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(19, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(19, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(19, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(20, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(19, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(21, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(19, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.WEDNESDAY, d(22, DayDate.Month.APRIL, 2006)));
 
-        assertEquals(d(13, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(16, MonthConstants.APRIL, 2006)));
-        assertEquals(d(20, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(17, MonthConstants.APRIL, 2006)));
-        assertEquals(d(20, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(18, MonthConstants.APRIL, 2006)));
-        assertEquals(d(20, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(19, MonthConstants.APRIL, 2006)));
-        assertEquals(d(20, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(20, MonthConstants.APRIL, 2006)));
-        assertEquals(d(20, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(21, MonthConstants.APRIL, 2006)));
-        assertEquals(d(20, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(22, MonthConstants.APRIL, 2006)));
+        assertEquals(d(13, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(16, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(20, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(17, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(20, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(18, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(20, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(19, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(20, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(20, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(20, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(21, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(20, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.THURSDAY, d(22, DayDate.Month.APRIL, 2006)));
 
-        assertEquals(d(14, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(16, MonthConstants.APRIL, 2006)));
-        assertEquals(d(14, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(17, MonthConstants.APRIL, 2006)));
-        assertEquals(d(21, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(18, MonthConstants.APRIL, 2006)));
-        assertEquals(d(21, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(19, MonthConstants.APRIL, 2006)));
-        assertEquals(d(21, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(20, MonthConstants.APRIL, 2006)));
-        assertEquals(d(21, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(21, MonthConstants.APRIL, 2006)));
-        assertEquals(d(21, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(22, MonthConstants.APRIL, 2006)));
+        assertEquals(d(14, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(16, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(14, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(17, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(21, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(18, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(21, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(19, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(21, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(20, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(21, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(21, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(21, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.FRIDAY, d(22, DayDate.Month.APRIL, 2006)));
 
-        assertEquals(d(15, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(16, MonthConstants.APRIL, 2006)));
-        assertEquals(d(15, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(17, MonthConstants.APRIL, 2006)));
-        assertEquals(d(15, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(18, MonthConstants.APRIL, 2006)));
-        assertEquals(d(22, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(19, MonthConstants.APRIL, 2006)));
-        assertEquals(d(22, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(20, MonthConstants.APRIL, 2006)));
-        assertEquals(d(22, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(21, MonthConstants.APRIL, 2006)));
-        assertEquals(d(22, MonthConstants.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(22, MonthConstants.APRIL, 2006)));
+        assertEquals(d(15, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(16, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(15, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(17, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(15, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(18, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(22, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(19, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(22, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(20, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(22, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(21, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(22, DayDate.Month.APRIL, 2006), DayDate.getNearestDayOfWeek(DayDate.SATURDAY, d(22, DayDate.Month.APRIL, 2006)));
 
         try {
-            DayDate.getNearestDayOfWeek(-1, d(1, MonthConstants.JANUARY, 2006));
+            DayDate.getNearestDayOfWeek(-1, d(1, DayDate.Month.JANUARY, 2006));
             fail("Invalid day of week code should throw exception");
         } catch (IllegalArgumentException e) {
         }
@@ -390,19 +383,19 @@ public class BobsSerialDateTest extends TestCase {
 
     public void testEndOfCurrentMonth() throws Exception {
         DayDate d = DayDate.createInstance(2);
-        assertEquals(d(31, MonthConstants.JANUARY, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.JANUARY, 2006)));
-        assertEquals(d(28, MonthConstants.FEBRUARY, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.FEBRUARY, 2006)));
-        assertEquals(d(31, MonthConstants.MARCH, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.MARCH, 2006)));
-        assertEquals(d(30, MonthConstants.APRIL, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.APRIL, 2006)));
-        assertEquals(d(31, MonthConstants.MAY, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.MAY, 2006)));
-        assertEquals(d(30, MonthConstants.JUNE, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.JUNE, 2006)));
-        assertEquals(d(31, MonthConstants.JULY, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.JULY, 2006)));
-        assertEquals(d(31, MonthConstants.AUGUST, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.AUGUST, 2006)));
-        assertEquals(d(30, MonthConstants.SEPTEMBER, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.SEPTEMBER, 2006)));
-        assertEquals(d(31, MonthConstants.OCTOBER, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.OCTOBER, 2006)));
-        assertEquals(d(30, MonthConstants.NOVEMBER, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.NOVEMBER, 2006)));
-        assertEquals(d(31, MonthConstants.DECEMBER, 2006), d.getEndOfCurrentMonth(d(1, MonthConstants.DECEMBER, 2006)));
-        assertEquals(d(29, MonthConstants.FEBRUARY, 2008), d.getEndOfCurrentMonth(d(1, MonthConstants.FEBRUARY, 2008)));
+        assertEquals(d(31, DayDate.Month.JANUARY, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.JANUARY, 2006)));
+        assertEquals(d(28, DayDate.Month.FEBRUARY, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.FEBRUARY, 2006)));
+        assertEquals(d(31, DayDate.Month.MARCH, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.MARCH, 2006)));
+        assertEquals(d(30, DayDate.Month.APRIL, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.APRIL, 2006)));
+        assertEquals(d(31, DayDate.Month.MAY, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.MAY, 2006)));
+        assertEquals(d(30, DayDate.Month.JUNE, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.JUNE, 2006)));
+        assertEquals(d(31, DayDate.Month.JULY, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.JULY, 2006)));
+        assertEquals(d(31, DayDate.Month.AUGUST, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.AUGUST, 2006)));
+        assertEquals(d(30, DayDate.Month.SEPTEMBER, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.SEPTEMBER, 2006)));
+        assertEquals(d(31, DayDate.Month.OCTOBER, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.OCTOBER, 2006)));
+        assertEquals(d(30, DayDate.Month.NOVEMBER, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.NOVEMBER, 2006)));
+        assertEquals(d(31, DayDate.Month.DECEMBER, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.DECEMBER, 2006)));
+        assertEquals(d(29, DayDate.Month.FEBRUARY, 2008), d.getEndOfCurrentMonth(d(1, DayDate.Month.FEBRUARY, 2008)));
     }
 
     public void testWeekInMonthToString() throws Exception {
