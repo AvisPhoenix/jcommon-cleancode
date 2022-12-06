@@ -324,18 +324,6 @@ public abstract class DayDate implements Comparable,
     }
 
     /**
-     * Returns true if the supplied integer code represents a valid month.
-     *
-     * @param code  the code being checked for validity.
-     *
-     * @return <code>true</code> if the supplied integer code represents a 
-     *         valid month.
-     */
-    public static boolean isValidMonthCode(final Month month) {
-        return 1 <= month.index && month.index <=12;
-    }
-
-    /**
      * Returns the quarter for the specified month.
      *
      * @param code  the month code (1-12).
@@ -343,8 +331,6 @@ public abstract class DayDate implements Comparable,
      * @return the quarter that the month belongs to.
      */
     public static int monthCodeToQuarter(final Month month) {
-        if (!isValidMonthCode(month)) throw new IllegalArgumentException("SerialDate.monthCodeToQuarter: invalid month code.");
-
         return month.index%3 + 1;
     }
 
@@ -378,13 +364,6 @@ public abstract class DayDate implements Comparable,
      */
     public static String monthCodeToString(final Month month, 
                                            final boolean shortened) {
-
-        // check arguments...
-        if (!isValidMonthCode(month)) {
-            throw new IllegalArgumentException(
-                "SerialDate.monthCodeToString: month outside valid range.");
-        }
-
         final String[] months;
 
         if (shortened) {
