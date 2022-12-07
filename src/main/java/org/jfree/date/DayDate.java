@@ -508,7 +508,7 @@ public abstract class DayDate implements Comparable,
     public static DayDate addDays(final int days, final DayDate base) {
 
         final int serialDayNumber = base.toSerial() + days;
-        return DayDate.createInstance(serialDayNumber);
+        return DayDateFactory.makeDate(serialDayNumber);
 
     }
 
@@ -534,7 +534,7 @@ public abstract class DayDate implements Comparable,
         final int dd = Math.min(
             base.getDayOfMonth(), DayDate.lastDayOfMonth(mm, yy)
         );
-        return DayDate.createInstance(dd, mm, yy);
+        return DayDateFactory.makeDate(dd, mm, yy);
 
     }
 
@@ -558,7 +558,7 @@ public abstract class DayDate implements Comparable,
             baseD, DayDate.lastDayOfMonth(baseM, targetY)
         );
 
-        return DayDate.createInstance(targetD, baseM, targetY);
+        return DayDateFactory.makeDate(targetD, baseM, targetY);
 
     }
 
@@ -669,7 +669,7 @@ public abstract class DayDate implements Comparable,
         final int last = DayDate.lastDayOfMonth(
             base.getMonth(), base.getYYYY()
         );
-        return DayDate.createInstance(last, base.getMonth(), base.getYYYY());
+        return DayDateFactory.makeDate(last, base.getMonth(), base.getYYYY());
     }
 
     /**
@@ -712,50 +712,6 @@ public abstract class DayDate implements Comparable,
             case DayDate.FOLLOWING : return "Following";
             default : throw new IllegalArgumentException();
         }
-
-    }
-
-    /**
-     * Factory method that returns an instance of some concrete subclass of 
-     * {@link DayDate}.
-     *
-     * @param day  the day (1-31).
-     * @param month  the month (1-12).
-     * @param yyyy  the year (in the range 1900 to 9999).
-     *
-     * @return An instance of {@link DayDate}.
-     */
-    public static DayDate createInstance(final int day, final Month month, 
-                                            final int yyyy) {
-        return new SpreadsheetDate(day, month, yyyy);
-    }
-
-    /**
-     * Factory method that returns an instance of some concrete subclass of 
-     * {@link DayDate}.
-     *
-     * @param serial  the serial number for the day (1 January 1900 = 2).
-     *
-     * @return a instance of SerialDate.
-     */
-    public static DayDate createInstance(final int serial) {
-        return new SpreadsheetDate(serial);
-    }
-
-    /**
-     * Factory method that returns an instance of a subclass of SerialDate.
-     *
-     * @param date  A Java date object.
-     *
-     * @return a instance of SerialDate.
-     */
-    public static DayDate createInstance(final java.util.Date date) {
-
-        final GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        return new SpreadsheetDate(calendar.get(Calendar.DATE),
-                                   Month.make(calendar.get(Calendar.MONTH) + 1),
-                                   calendar.get(Calendar.YEAR));
 
     }
 

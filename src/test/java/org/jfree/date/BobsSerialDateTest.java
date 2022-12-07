@@ -382,7 +382,7 @@ public class BobsSerialDateTest extends TestCase {
     }
 
     public void testEndOfCurrentMonth() throws Exception {
-        DayDate d = DayDate.createInstance(2);
+        DayDate d = DayDateFactory.makeDate(2);
         assertEquals(d(31, DayDate.Month.JANUARY, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.JANUARY, 2006)));
         assertEquals(d(28, DayDate.Month.FEBRUARY, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.FEBRUARY, 2006)));
         assertEquals(d(31, DayDate.Month.MARCH, 2006), d.getEndOfCurrentMonth(d(1, DayDate.Month.MARCH, 2006)));
