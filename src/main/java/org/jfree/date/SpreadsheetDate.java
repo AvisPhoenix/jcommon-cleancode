@@ -82,7 +82,17 @@ public class SpreadsheetDate extends DayDate {
 
     /** For serialization. */
     private static final long serialVersionUID = -2039586705374454461L;
-    
+
+    /** 1 January 1900. */
+    public static final int EARLIEST_DATE_ORDINAL = 2;
+
+    /** 31 December 9999. */
+    public static final int LASTEST_DATE_ORDINAL = 2958465;
+
+    public static final int MINIMUM_YEAR_SUPPORTED = 1900;
+
+    public static final int MAXIMUM_YEAR_SUPPORTED = 9999;
+
     /** 
      * The day number (1-Jan-1900 = 2, 2-Jan-1900 = 3, ..., 31-Dec-9999 = 
      * 2958465). 
@@ -102,12 +112,12 @@ public class SpreadsheetDate extends DayDate {
      * Creates a new date instance.
      *
      * @param day  the day (in the range 1 to 28/29/30/31).
-     * @param month  the month (in the range 1 to 12).
+     * @param month  the month (Month Data type).
      * @param year  the year (in the range 1900 to 9999).
      */
     public SpreadsheetDate(final int day, final Month month, final int year) {
 
-        if ((year >= 1900) && (year <= 9999)) {
+        if ((year >= MINIMUM_YEAR_SUPPORTED) && (year <= MAXIMUM_YEAR_SUPPORTED)) {
             this.year = year;
         }
         else {
@@ -128,6 +138,17 @@ public class SpreadsheetDate extends DayDate {
         // the serial number needs to be synchronised with the day-month-year...
         this.serial = calcSerial(day, month.index, year);
 
+    }
+
+    /**
+     * Creates a new date instance.
+     *
+     * @param day  the day (in the range 1 to 28/29/30/31).
+     * @param month  the month (in the range 1 to 12).
+     * @param year  the year (in the range 1900 to 9999).
+     */
+    public SpreadsheetDate(final int day, final int month, final int year) {
+        this(day,DayDate.Month.make(month), year);
     }
 
     /**
