@@ -57,17 +57,15 @@ public class DayOfWeekInMonthRule extends AnnualDateRule {
     /** FIRST, SECOND, THIRD, FOURTH or LAST. */
     private int count;
 
-    /** The day of the week (SerialDate.MONDAY, SerialDate.TUESDAY...). */
-    private int dayOfWeek;
+    private Day dayOfWeek;
 
-    /** The month (1 to 12, or SerialDate.JANUARY, SerialDate.FEBRUARY...). */
     private Month month;
 
     /**
      * Default constructor: builds a rule for the first Monday in January by default.
      */
     public DayOfWeekInMonthRule() {
-        this(1, DayDate.MONDAY, Month.JANUARY);
+        this(1, Day.MONDAY, Month.JANUARY);
     }
 
     /**
@@ -77,7 +75,7 @@ public class DayOfWeekInMonthRule extends AnnualDateRule {
      * @param dayOfWeek  the day-of-the-week (SerialDate.MONDAY, SerialDate.TUESDAY, etc.).
      * @param month  the month (SerialDate.JANUARY, SerialDate.FEBRUARY, etc.).
      */
-    public DayOfWeekInMonthRule(final int count, final int dayOfWeek, final Month month) {
+    public DayOfWeekInMonthRule(final int count, final Day dayOfWeek, final Month month) {
         this.count = count;
         this.dayOfWeek = dayOfWeek;
         this.month = month;
@@ -106,7 +104,7 @@ public class DayOfWeekInMonthRule extends AnnualDateRule {
      *
      * @return the day-of-the-week.
      */
-    public int getDayOfWeek() {
+    public Day getDayOfWeek() {
         return this.dayOfWeek;
     }
 
@@ -115,7 +113,7 @@ public class DayOfWeekInMonthRule extends AnnualDateRule {
      *
      * @param dayOfWeek  the day-of-the-week.
      */
-    public void setDayOfWeek(final int dayOfWeek) {
+    public void setDayOfWeek(final Day dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 

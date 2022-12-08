@@ -50,7 +50,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -62,6 +61,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import org.jfree.date.DayDate;
+import org.jfree.date.Day;
 import org.jfree.date.DayDateFactory;
 
 /**
@@ -92,7 +92,7 @@ public class SerialDateChooserPanel extends JPanel implements ActionListener {
     private Color chosenOtherButtonColor = Color.darkGray;
 
     /** The first day-of-the-week. */
-    private int firstDayOfWeek = Calendar.SUNDAY;
+    private Day firstDayOfWeek = Day.SUNDAY;
 
     /** The range used for selecting years. */
     private int yearSelectionRange = 20;
@@ -303,7 +303,7 @@ public class SerialDateChooserPanel extends JPanel implements ActionListener {
      *
      * @return the first day of the week.
      */
-    private int getFirstDayOfWeek() {
+    private Day getFirstDayOfWeek() {
         return this.firstDayOfWeek;
     }
 

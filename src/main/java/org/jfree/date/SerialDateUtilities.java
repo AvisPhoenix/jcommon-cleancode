@@ -110,28 +110,28 @@ public class SerialDateUtilities {
      *
      * @return an integer representing the day-of-the-week.
      */
-    public int stringToWeekday(final String s) {
+    public Day stringToWeekday(final String s) {
 
         if (s.equals(this.weekdays[Calendar.SATURDAY])) {
-            return DayDate.SATURDAY;
+            return Day.SATURDAY;
         }
         else if (s.equals(this.weekdays[Calendar.SUNDAY])) {
-            return DayDate.SUNDAY;
+            return Day.SUNDAY;
         }
         else if (s.equals(this.weekdays[Calendar.MONDAY])) {
-            return DayDate.MONDAY;
+            return Day.MONDAY;
         }
         else if (s.equals(this.weekdays[Calendar.TUESDAY])) {
-            return DayDate.TUESDAY;
+            return Day.TUESDAY;
         }
         else if (s.equals(this.weekdays[Calendar.WEDNESDAY])) {
-            return DayDate.WEDNESDAY;
+            return Day.WEDNESDAY;
         }
         else if (s.equals(this.weekdays[Calendar.THURSDAY])) {
-            return DayDate.THURSDAY;
+            return Day.THURSDAY;
         }
         else {
-            return DayDate.FRIDAY;
+            return Day.FRIDAY;
         }
 
     }
