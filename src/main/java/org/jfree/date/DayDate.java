@@ -99,22 +99,14 @@ public abstract class DayDate implements Comparable,
     private static final int[] LAST_DAY_OF_MONTH =
         {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    /** A description for the date. */
     private String description;
-
-    /**
-     * Default constructor.
-     */
-    protected DayDate() {
-    }
 
     /**
      * Converts the supplied string to a day of the week.
      *
      * @param s  a string representing the day of the week.
      *
-     * @return <code>-1</code> if the string is not convertable, the day of 
-     *         the week otherwise.
+     * @return The day of the week. if string is invalid throw IllegalArgumentException
      */
     public static Day stringToWeekday(String s) {
 
@@ -247,8 +239,7 @@ public abstract class DayDate implements Comparable,
      *
      * @param s  the string to parse.
      *
-     * @return <code>-1</code> if the string is not parseable, the month of the
-     *         year otherwise.
+     * @return the month of the year. In case cannot be parse throw IllegalArgumentException
      */
     public static Month stringToMonth(String s) {
 
