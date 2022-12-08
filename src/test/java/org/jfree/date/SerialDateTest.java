@@ -160,9 +160,9 @@ public class SerialDateTest extends TestCase {
      * Problem that the conversion of days to strings returns the right result.  Actually, this 
      * result depends on the Locale so this test needs to be modified.
      */
-    public void testWeekdayCodeToString() {
+    public void testWeekdayToString() {
 
-        final String test = DayDate.weekdayCodeToString(Day.SATURDAY);
+        final String test = DayDate.weekdayToString(Day.SATURDAY);
         assertEquals("Saturday", test);
 
     }
@@ -173,14 +173,14 @@ public class SerialDateTest extends TestCase {
      */
     public void testStringToWeekday() {
 
-        int weekday = DayDate.stringToWeekdayCode("Wednesday");
-        assertEquals(Day.WEDNESDAY.toInt(), weekday);
+        Day weekday = DayDate.stringToWeekday("Wednesday");
+        assertEquals(Day.WEDNESDAY, weekday);
 
-        weekday = DayDate.stringToWeekdayCode(" Wednesday ");
-        assertEquals(Day.WEDNESDAY.toInt(), weekday);
+        weekday = DayDate.stringToWeekday(" Wednesday ");
+        assertEquals(Day.WEDNESDAY, weekday);
 
-        weekday = DayDate.stringToWeekdayCode("Wed");
-        assertEquals(Day.WEDNESDAY.toInt(), weekday);
+        weekday = DayDate.stringToWeekday("Wed");
+        assertEquals(Day.WEDNESDAY, weekday);
 
     }
 
@@ -188,25 +188,25 @@ public class SerialDateTest extends TestCase {
      * Test the conversion of a string to a month.  Note that this test will fail if the default
      * locale doesn't use English month names...devise a better test!
      */
-    public void testStringToMonthCode() {
+    public void testStringToMonth() {
 
-        int m = DayDate.stringToMonthCode("January");
-        assertEquals(DayDate.Month.JANUARY.index, m);
+        DayDate.Month m = DayDate.stringToMonth("January");
+        assertEquals(DayDate.Month.JANUARY, m);
 
-        m = DayDate.stringToMonthCode(" January ");
-        assertEquals(DayDate.Month.JANUARY.index, m);
+        m = DayDate.stringToMonth(" January ");
+        assertEquals(DayDate.Month.JANUARY, m);
 
-        m = DayDate.stringToMonthCode("Jan");
-        assertEquals(DayDate.Month.JANUARY.index, m);
+        m = DayDate.stringToMonth("Jan");
+        assertEquals(DayDate.Month.JANUARY, m);
 
     }
 
     /**
      * Tests the conversion of a month code to a string.
      */
-    public void testMonthCodeToStringCode() {
+    public void testMonthToString() {
 
-        final String test = DayDate.monthCodeToString(DayDate.Month.DECEMBER);
+        final String test = DayDate.monthToString(DayDate.Month.DECEMBER);
         assertEquals("December", test);
 
     }

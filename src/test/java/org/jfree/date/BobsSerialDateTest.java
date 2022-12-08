@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 
 public class BobsSerialDateTest extends TestCase {
-    public void testIsValidWeekdayCode() throws Exception {
+    public void testIsValidWeekday() throws Exception {
         
         assertEquals( Day.SUNDAY, Day.fromInt(1));
         assertEquals( Day.MONDAY, Day.fromInt(2));
@@ -31,77 +31,76 @@ public class BobsSerialDateTest extends TestCase {
         }
     }
 
-    public void testStringToWeekdayCode() throws Exception {
+    public void testStringToWeekday() throws Exception {
 
-        assertEquals(-1, DayDate.stringToWeekdayCode("Hello"));
-        assertEquals(Day.MONDAY.toInt(), DayDate.stringToWeekdayCode("Monday"));
-        assertEquals(Day.MONDAY.toInt(), DayDate.stringToWeekdayCode("Mon"));
-        assertEquals(Day.MONDAY.toInt(),DayDate.stringToWeekdayCode("monday"));
-        assertEquals(Day.MONDAY.toInt(),DayDate.stringToWeekdayCode("MONDAY"));
-        assertEquals(Day.MONDAY.toInt(), DayDate.stringToWeekdayCode("mon"));
+        assertEquals(Day.MONDAY, DayDate.stringToWeekday("Monday"));
+        assertEquals(Day.MONDAY, DayDate.stringToWeekday("Mon"));
+        assertEquals(Day.MONDAY,DayDate.stringToWeekday("monday"));
+        assertEquals(Day.MONDAY,DayDate.stringToWeekday("MONDAY"));
+        assertEquals(Day.MONDAY, DayDate.stringToWeekday("mon"));
 
-        assertEquals(Day.TUESDAY.toInt(), DayDate.stringToWeekdayCode("Tuesday"));
-        assertEquals(Day.TUESDAY.toInt(), DayDate.stringToWeekdayCode("Tue"));
-        assertEquals(Day.TUESDAY.toInt(),DayDate.stringToWeekdayCode("tuesday"));
-        assertEquals(Day.TUESDAY.toInt(),DayDate.stringToWeekdayCode("TUESDAY"));
-        assertEquals(Day.TUESDAY.toInt(), DayDate.stringToWeekdayCode("tue"));
+        assertEquals(Day.TUESDAY, DayDate.stringToWeekday("Tuesday"));
+        assertEquals(Day.TUESDAY, DayDate.stringToWeekday("Tue"));
+        assertEquals(Day.TUESDAY,DayDate.stringToWeekday("tuesday"));
+        assertEquals(Day.TUESDAY,DayDate.stringToWeekday("TUESDAY"));
+        assertEquals(Day.TUESDAY, DayDate.stringToWeekday("tue"));
         //assertEquals(SerialDate.TUESDAY, SerialDate.stringToWeekdayCode("tues"));
 
-        assertEquals(Day.WEDNESDAY.toInt(), DayDate.stringToWeekdayCode("Wednesday"));
-        assertEquals(Day.WEDNESDAY.toInt(), DayDate.stringToWeekdayCode("Wed"));
-        assertEquals(Day.WEDNESDAY.toInt(),DayDate.stringToWeekdayCode("wednesday"));
-        assertEquals(Day.WEDNESDAY.toInt(),DayDate.stringToWeekdayCode("WEDNESDAY"));
-        assertEquals(Day.WEDNESDAY.toInt(), DayDate.stringToWeekdayCode("wed"));
+        assertEquals(Day.WEDNESDAY, DayDate.stringToWeekday("Wednesday"));
+        assertEquals(Day.WEDNESDAY, DayDate.stringToWeekday("Wed"));
+        assertEquals(Day.WEDNESDAY,DayDate.stringToWeekday("wednesday"));
+        assertEquals(Day.WEDNESDAY,DayDate.stringToWeekday("WEDNESDAY"));
+        assertEquals(Day.WEDNESDAY, DayDate.stringToWeekday("wed"));
 
-        assertEquals(Day.THURSDAY.toInt(), DayDate.stringToWeekdayCode("Thursday"));
-        assertEquals(Day.THURSDAY.toInt(), DayDate.stringToWeekdayCode("Thu"));
-        assertEquals(Day.THURSDAY.toInt(),DayDate.stringToWeekdayCode("thursday"));
-        assertEquals(Day.THURSDAY.toInt(),DayDate.stringToWeekdayCode("THURSDAY"));
-        assertEquals(Day.THURSDAY.toInt(), DayDate.stringToWeekdayCode("thu"));
+        assertEquals(Day.THURSDAY, DayDate.stringToWeekday("Thursday"));
+        assertEquals(Day.THURSDAY, DayDate.stringToWeekday("Thu"));
+        assertEquals(Day.THURSDAY,DayDate.stringToWeekday("thursday"));
+        assertEquals(Day.THURSDAY,DayDate.stringToWeekday("THURSDAY"));
+        assertEquals(Day.THURSDAY, DayDate.stringToWeekday("thu"));
         //assertEquals(SerialDate.THURSDAY, SerialDate.stringToWeekdayCode("thurs"));
 
-        assertEquals(Day.FRIDAY.toInt(), DayDate.stringToWeekdayCode("Friday"));
-        assertEquals(Day.FRIDAY.toInt(), DayDate.stringToWeekdayCode("Fri"));
-        assertEquals(Day.FRIDAY.toInt(),DayDate.stringToWeekdayCode("friday"));
-        assertEquals(Day.FRIDAY.toInt(),DayDate.stringToWeekdayCode("FRIDAY"));
-        assertEquals(Day.FRIDAY.toInt(), DayDate.stringToWeekdayCode("fri"));
+        assertEquals(Day.FRIDAY, DayDate.stringToWeekday("Friday"));
+        assertEquals(Day.FRIDAY, DayDate.stringToWeekday("Fri"));
+        assertEquals(Day.FRIDAY,DayDate.stringToWeekday("friday"));
+        assertEquals(Day.FRIDAY,DayDate.stringToWeekday("FRIDAY"));
+        assertEquals(Day.FRIDAY, DayDate.stringToWeekday("fri"));
 
-        assertEquals(Day.SATURDAY.toInt(), DayDate.stringToWeekdayCode("Saturday"));
-        assertEquals(Day.SATURDAY.toInt(), DayDate.stringToWeekdayCode("Sat"));
-        assertEquals(Day.SATURDAY.toInt(),DayDate.stringToWeekdayCode("saturday"));
-        assertEquals(Day.SATURDAY.toInt(),DayDate.stringToWeekdayCode("SATURDAY"));
-        assertEquals(Day.SATURDAY.toInt(), DayDate.stringToWeekdayCode("sat"));
+        assertEquals(Day.SATURDAY, DayDate.stringToWeekday("Saturday"));
+        assertEquals(Day.SATURDAY, DayDate.stringToWeekday("Sat"));
+        assertEquals(Day.SATURDAY,DayDate.stringToWeekday("saturday"));
+        assertEquals(Day.SATURDAY,DayDate.stringToWeekday("SATURDAY"));
+        assertEquals(Day.SATURDAY, DayDate.stringToWeekday("sat"));
 
-        assertEquals(Day.SUNDAY.toInt(), DayDate.stringToWeekdayCode("Sunday"));
-        assertEquals(Day.SUNDAY.toInt(), DayDate.stringToWeekdayCode("Sun"));
-        assertEquals(Day.SUNDAY.toInt(),DayDate.stringToWeekdayCode("sunday"));
-        assertEquals(Day.SUNDAY.toInt(),DayDate.stringToWeekdayCode("SUNDAY"));
-        assertEquals(Day.SUNDAY.toInt(), DayDate.stringToWeekdayCode("sun"));
+        assertEquals(Day.SUNDAY, DayDate.stringToWeekday("Sunday"));
+        assertEquals(Day.SUNDAY, DayDate.stringToWeekday("Sun"));
+        assertEquals(Day.SUNDAY,DayDate.stringToWeekday("sunday"));
+        assertEquals(Day.SUNDAY,DayDate.stringToWeekday("SUNDAY"));
+        assertEquals(Day.SUNDAY, DayDate.stringToWeekday("sun"));
     }
 
-    public void testWeekdayCodeToString() throws Exception {
-        assertEquals("Sunday", DayDate.weekdayCodeToString(Day.SUNDAY));
-        assertEquals("Monday", DayDate.weekdayCodeToString(Day.MONDAY));
-        assertEquals("Tuesday", DayDate.weekdayCodeToString(Day.TUESDAY));
-        assertEquals("Wednesday", DayDate.weekdayCodeToString(Day.WEDNESDAY));
-        assertEquals("Thursday", DayDate.weekdayCodeToString(Day.THURSDAY));
-        assertEquals("Friday", DayDate.weekdayCodeToString(Day.FRIDAY));
-        assertEquals("Saturday", DayDate.weekdayCodeToString(Day.SATURDAY));
+    public void testWeekdayToString() throws Exception {
+        assertEquals("Sunday", DayDate.weekdayToString(Day.SUNDAY));
+        assertEquals("Monday", DayDate.weekdayToString(Day.MONDAY));
+        assertEquals("Tuesday", DayDate.weekdayToString(Day.TUESDAY));
+        assertEquals("Wednesday", DayDate.weekdayToString(Day.WEDNESDAY));
+        assertEquals("Thursday", DayDate.weekdayToString(Day.THURSDAY));
+        assertEquals("Friday", DayDate.weekdayToString(Day.FRIDAY));
+        assertEquals("Saturday", DayDate.weekdayToString(Day.SATURDAY));
     }
 
     public void testMonthToQuarter() throws Exception {
-        assertEquals(1, DayDate.monthCodeToQuarter(DayDate.Month.JANUARY));
-        assertEquals(1, DayDate.monthCodeToQuarter(DayDate.Month.FEBRUARY));
-        assertEquals(1, DayDate.monthCodeToQuarter(DayDate.Month.MARCH));
-        assertEquals(2, DayDate.monthCodeToQuarter(DayDate.Month.APRIL));
-        assertEquals(2, DayDate.monthCodeToQuarter(DayDate.Month.MAY));
-        assertEquals(2, DayDate.monthCodeToQuarter(DayDate.Month.JUNE));
-        assertEquals(3, DayDate.monthCodeToQuarter(DayDate.Month.JULY));
-        assertEquals(3, DayDate.monthCodeToQuarter(DayDate.Month.AUGUST));
-        assertEquals(3, DayDate.monthCodeToQuarter(DayDate.Month.SEPTEMBER));
-        assertEquals(4, DayDate.monthCodeToQuarter(DayDate.Month.OCTOBER));
-        assertEquals(4, DayDate.monthCodeToQuarter(DayDate.Month.NOVEMBER));
-        assertEquals(4, DayDate.monthCodeToQuarter(DayDate.Month.DECEMBER));
+        assertEquals(1, DayDate.monthToQuarter(DayDate.Month.JANUARY));
+        assertEquals(1, DayDate.monthToQuarter(DayDate.Month.FEBRUARY));
+        assertEquals(1, DayDate.monthToQuarter(DayDate.Month.MARCH));
+        assertEquals(2, DayDate.monthToQuarter(DayDate.Month.APRIL));
+        assertEquals(2, DayDate.monthToQuarter(DayDate.Month.MAY));
+        assertEquals(2, DayDate.monthToQuarter(DayDate.Month.JUNE));
+        assertEquals(3, DayDate.monthToQuarter(DayDate.Month.JULY));
+        assertEquals(3, DayDate.monthToQuarter(DayDate.Month.AUGUST));
+        assertEquals(3, DayDate.monthToQuarter(DayDate.Month.SEPTEMBER));
+        assertEquals(4, DayDate.monthToQuarter(DayDate.Month.OCTOBER));
+        assertEquals(4, DayDate.monthToQuarter(DayDate.Month.NOVEMBER));
+        assertEquals(4, DayDate.monthToQuarter(DayDate.Month.DECEMBER));
 
         try {
             DayDate.Month.make(-1);
@@ -110,32 +109,32 @@ public class BobsSerialDateTest extends TestCase {
         }
     }
 
-    public void testMonthCodeToString() throws Exception {
-        assertEquals("January", DayDate.monthCodeToString(DayDate.Month.JANUARY));
-        assertEquals("February", DayDate.monthCodeToString(DayDate.Month.FEBRUARY));
-        assertEquals("March", DayDate.monthCodeToString(DayDate.Month.MARCH));
-        assertEquals("April", DayDate.monthCodeToString(DayDate.Month.APRIL));
-        assertEquals("May", DayDate.monthCodeToString(DayDate.Month.MAY));
-        assertEquals("June", DayDate.monthCodeToString(DayDate.Month.JUNE));
-        assertEquals("July", DayDate.monthCodeToString(DayDate.Month.JULY));
-        assertEquals("August", DayDate.monthCodeToString(DayDate.Month.AUGUST));
-        assertEquals("September", DayDate.monthCodeToString(DayDate.Month.SEPTEMBER));
-        assertEquals("October", DayDate.monthCodeToString(DayDate.Month.OCTOBER));
-        assertEquals("November", DayDate.monthCodeToString(DayDate.Month.NOVEMBER));
-        assertEquals("December", DayDate.monthCodeToString(DayDate.Month.DECEMBER));
+    public void testMonthToString() throws Exception {
+        assertEquals("January", DayDate.monthToString(DayDate.Month.JANUARY));
+        assertEquals("February", DayDate.monthToString(DayDate.Month.FEBRUARY));
+        assertEquals("March", DayDate.monthToString(DayDate.Month.MARCH));
+        assertEquals("April", DayDate.monthToString(DayDate.Month.APRIL));
+        assertEquals("May", DayDate.monthToString(DayDate.Month.MAY));
+        assertEquals("June", DayDate.monthToString(DayDate.Month.JUNE));
+        assertEquals("July", DayDate.monthToString(DayDate.Month.JULY));
+        assertEquals("August", DayDate.monthToString(DayDate.Month.AUGUST));
+        assertEquals("September", DayDate.monthToString(DayDate.Month.SEPTEMBER));
+        assertEquals("October", DayDate.monthToString(DayDate.Month.OCTOBER));
+        assertEquals("November", DayDate.monthToString(DayDate.Month.NOVEMBER));
+        assertEquals("December", DayDate.monthToString(DayDate.Month.DECEMBER));
 
-        assertEquals("Jan", DayDate.monthCodeToString(DayDate.Month.JANUARY, true));
-        assertEquals("Feb", DayDate.monthCodeToString(DayDate.Month.FEBRUARY, true));
-        assertEquals("Mar", DayDate.monthCodeToString(DayDate.Month.MARCH, true));
-        assertEquals("Apr", DayDate.monthCodeToString(DayDate.Month.APRIL, true));
-        assertEquals("May", DayDate.monthCodeToString(DayDate.Month.MAY, true));
-        assertEquals("Jun", DayDate.monthCodeToString(DayDate.Month.JUNE, true));
-        assertEquals("Jul", DayDate.monthCodeToString(DayDate.Month.JULY, true));
-        assertEquals("Aug", DayDate.monthCodeToString(DayDate.Month.AUGUST, true));
-        assertEquals("Sep", DayDate.monthCodeToString(DayDate.Month.SEPTEMBER, true));
-        assertEquals("Oct", DayDate.monthCodeToString(DayDate.Month.OCTOBER, true));
-        assertEquals("Nov", DayDate.monthCodeToString(DayDate.Month.NOVEMBER, true));
-        assertEquals("Dec", DayDate.monthCodeToString(DayDate.Month.DECEMBER, true));
+        assertEquals("Jan", DayDate.monthToString(DayDate.Month.JANUARY, true));
+        assertEquals("Feb", DayDate.monthToString(DayDate.Month.FEBRUARY, true));
+        assertEquals("Mar", DayDate.monthToString(DayDate.Month.MARCH, true));
+        assertEquals("Apr", DayDate.monthToString(DayDate.Month.APRIL, true));
+        assertEquals("May", DayDate.monthToString(DayDate.Month.MAY, true));
+        assertEquals("Jun", DayDate.monthToString(DayDate.Month.JUNE, true));
+        assertEquals("Jul", DayDate.monthToString(DayDate.Month.JULY, true));
+        assertEquals("Aug", DayDate.monthToString(DayDate.Month.AUGUST, true));
+        assertEquals("Sep", DayDate.monthToString(DayDate.Month.SEPTEMBER, true));
+        assertEquals("Oct", DayDate.monthToString(DayDate.Month.OCTOBER, true));
+        assertEquals("Nov", DayDate.monthToString(DayDate.Month.NOVEMBER, true));
+        assertEquals("Dec", DayDate.monthToString(DayDate.Month.DECEMBER, true));
 
         try {
             DayDate.Month.make(-1);
@@ -145,81 +144,94 @@ public class BobsSerialDateTest extends TestCase {
 
     }
 
-    public void testStringToMonthCode() throws Exception {
-        assertEquals(DayDate.Month.JANUARY.index, DayDate.stringToMonthCode("1"));
-        assertEquals(DayDate.Month.FEBRUARY.index, DayDate.stringToMonthCode("2"));
-        assertEquals(DayDate.Month.MARCH.index, DayDate.stringToMonthCode("3"));
-        assertEquals(DayDate.Month.APRIL.index, DayDate.stringToMonthCode("4"));
-        assertEquals(DayDate.Month.MAY.index, DayDate.stringToMonthCode("5"));
-        assertEquals(DayDate.Month.JUNE.index, DayDate.stringToMonthCode("6"));
-        assertEquals(DayDate.Month.JULY.index, DayDate.stringToMonthCode("7"));
-        assertEquals(DayDate.Month.AUGUST.index, DayDate.stringToMonthCode("8"));
-        assertEquals(DayDate.Month.SEPTEMBER.index, DayDate.stringToMonthCode("9"));
-        assertEquals(DayDate.Month.OCTOBER.index, DayDate.stringToMonthCode("10"));
-        assertEquals(DayDate.Month.NOVEMBER.index, DayDate.stringToMonthCode("11"));
-        assertEquals(DayDate.Month.DECEMBER.index, DayDate.stringToMonthCode("12"));
+    public void testStringToMonth() throws Exception {
+        assertEquals(DayDate.Month.JANUARY, DayDate.stringToMonth("1"));
+        assertEquals(DayDate.Month.FEBRUARY, DayDate.stringToMonth("2"));
+        assertEquals(DayDate.Month.MARCH, DayDate.stringToMonth("3"));
+        assertEquals(DayDate.Month.APRIL, DayDate.stringToMonth("4"));
+        assertEquals(DayDate.Month.MAY, DayDate.stringToMonth("5"));
+        assertEquals(DayDate.Month.JUNE, DayDate.stringToMonth("6"));
+        assertEquals(DayDate.Month.JULY, DayDate.stringToMonth("7"));
+        assertEquals(DayDate.Month.AUGUST, DayDate.stringToMonth("8"));
+        assertEquals(DayDate.Month.SEPTEMBER, DayDate.stringToMonth("9"));
+        assertEquals(DayDate.Month.OCTOBER, DayDate.stringToMonth("10"));
+        assertEquals(DayDate.Month.NOVEMBER, DayDate.stringToMonth("11"));
+        assertEquals(DayDate.Month.DECEMBER, DayDate.stringToMonth("12"));
 
-        assertEquals(-1, DayDate.stringToMonthCode("0"));
-        assertEquals(-1, DayDate.stringToMonthCode("13"));
-
-        assertEquals(-1, DayDate.stringToMonthCode("Hello"));
-
-        for (DayDate.Month m : DayDate.Month.values()) {
-            assertEquals(m.index, DayDate.stringToMonthCode(DayDate.monthCodeToString(m, false)));
-            assertEquals(m.index, DayDate.stringToMonthCode(DayDate.monthCodeToString(m, true)));
+        try {
+            DayDate.stringToMonth("0");
+            fail("Invalid month code should throw exception");
+        } catch (IllegalArgumentException e) {
         }
 
-        assertEquals(1,DayDate.stringToMonthCode("jan"));
-        assertEquals(2,DayDate.stringToMonthCode("feb"));
-        assertEquals(3,DayDate.stringToMonthCode("mar"));
-        assertEquals(4,DayDate.stringToMonthCode("apr"));
-        assertEquals(5,DayDate.stringToMonthCode("may"));
-        assertEquals(6,DayDate.stringToMonthCode("jun"));
-        assertEquals(7,DayDate.stringToMonthCode("jul"));
-        assertEquals(8,DayDate.stringToMonthCode("aug"));
-        assertEquals(9,DayDate.stringToMonthCode("sep"));
-        assertEquals(10,DayDate.stringToMonthCode("oct"));
-        assertEquals(11,DayDate.stringToMonthCode("nov"));
-        assertEquals(12,DayDate.stringToMonthCode("dec"));
+        try {
+            DayDate.stringToMonth("13");
+            fail("Invalid month code should throw exception");
+        } catch (IllegalArgumentException e) {
+        }
 
-        assertEquals(1,DayDate.stringToMonthCode("JAN"));
-        assertEquals(2,DayDate.stringToMonthCode("FEB"));
-        assertEquals(3,DayDate.stringToMonthCode("MAR"));
-        assertEquals(4,DayDate.stringToMonthCode("APR"));
-        assertEquals(5,DayDate.stringToMonthCode("MAY"));
-        assertEquals(6,DayDate.stringToMonthCode("JUN"));
-        assertEquals(7,DayDate.stringToMonthCode("JUL"));
-        assertEquals(8,DayDate.stringToMonthCode("AUG"));
-        assertEquals(9,DayDate.stringToMonthCode("SEP"));
-        assertEquals(10,DayDate.stringToMonthCode("OCT"));
-        assertEquals(11,DayDate.stringToMonthCode("NOV"));
-        assertEquals(12,DayDate.stringToMonthCode("DEC"));
+        try {
+            DayDate.stringToMonth("Hello");
+            fail("Invalid month code should throw exception");
+        } catch (IllegalArgumentException e) {
+        }
 
-        assertEquals(1,DayDate.stringToMonthCode("january"));
-        assertEquals(2,DayDate.stringToMonthCode("february"));
-        assertEquals(3,DayDate.stringToMonthCode("march"));
-        assertEquals(4,DayDate.stringToMonthCode("april"));
-        assertEquals(5,DayDate.stringToMonthCode("may"));
-        assertEquals(6,DayDate.stringToMonthCode("june"));
-        assertEquals(7,DayDate.stringToMonthCode("july"));
-        assertEquals(8,DayDate.stringToMonthCode("august"));
-        assertEquals(9,DayDate.stringToMonthCode("september"));
-        assertEquals(10,DayDate.stringToMonthCode("october"));
-        assertEquals(11,DayDate.stringToMonthCode("november"));
-        assertEquals(12,DayDate.stringToMonthCode("december"));
+        for (DayDate.Month m : DayDate.Month.values()) {
+            assertEquals(m, DayDate.stringToMonth(DayDate.monthToString(m, false)));
+            assertEquals(m, DayDate.stringToMonth(DayDate.monthToString(m, true)));
+        }
 
-        assertEquals(1,DayDate.stringToMonthCode("JANUARY"));
-        assertEquals(2,DayDate.stringToMonthCode("FEBRUARY"));
-        assertEquals(3,DayDate.stringToMonthCode("MAR"));
-        assertEquals(4,DayDate.stringToMonthCode("APRIL"));
-        assertEquals(5,DayDate.stringToMonthCode("MAY"));
-        assertEquals(6,DayDate.stringToMonthCode("JUNE"));
-        assertEquals(7,DayDate.stringToMonthCode("JULY"));
-        assertEquals(8,DayDate.stringToMonthCode("AUGUST"));
-        assertEquals(9,DayDate.stringToMonthCode("SEPTEMBER"));
-        assertEquals(10,DayDate.stringToMonthCode("OCTOBER"));
-        assertEquals(11,DayDate.stringToMonthCode("NOVEMBER"));
-        assertEquals(12,DayDate.stringToMonthCode("DECEMBER"));
+        assertEquals(DayDate.Month.JANUARY,DayDate.stringToMonth("jan"));
+        assertEquals(DayDate.Month.FEBRUARY,DayDate.stringToMonth("feb"));
+        assertEquals(DayDate.Month.MARCH,DayDate.stringToMonth("mar"));
+        assertEquals(DayDate.Month.APRIL,DayDate.stringToMonth("apr"));
+        assertEquals(DayDate.Month.MAY,DayDate.stringToMonth("may"));
+        assertEquals(DayDate.Month.JUNE,DayDate.stringToMonth("jun"));
+        assertEquals(DayDate.Month.JULY,DayDate.stringToMonth("jul"));
+        assertEquals(DayDate.Month.AUGUST,DayDate.stringToMonth("aug"));
+        assertEquals(DayDate.Month.SEPTEMBER,DayDate.stringToMonth("sep"));
+        assertEquals(DayDate.Month.OCTOBER,DayDate.stringToMonth("oct"));
+        assertEquals(DayDate.Month.NOVEMBER,DayDate.stringToMonth("nov"));
+        assertEquals(DayDate.Month.DECEMBER,DayDate.stringToMonth("dec"));
+
+        assertEquals(DayDate.Month.JANUARY,DayDate.stringToMonth("JAN"));
+        assertEquals(DayDate.Month.FEBRUARY,DayDate.stringToMonth("FEB"));
+        assertEquals(DayDate.Month.MARCH,DayDate.stringToMonth("MAR"));
+        assertEquals(DayDate.Month.APRIL,DayDate.stringToMonth("APR"));
+        assertEquals(DayDate.Month.MAY,DayDate.stringToMonth("MAY"));
+        assertEquals(DayDate.Month.JUNE,DayDate.stringToMonth("JUN"));
+        assertEquals(DayDate.Month.JULY,DayDate.stringToMonth("JUL"));
+        assertEquals(DayDate.Month.AUGUST,DayDate.stringToMonth("AUG"));
+        assertEquals(DayDate.Month.SEPTEMBER,DayDate.stringToMonth("SEP"));
+        assertEquals(DayDate.Month.OCTOBER,DayDate.stringToMonth("OCT"));
+        assertEquals(DayDate.Month.NOVEMBER,DayDate.stringToMonth("NOV"));
+        assertEquals(DayDate.Month.DECEMBER,DayDate.stringToMonth("DEC"));
+
+        assertEquals(DayDate.Month.JANUARY,DayDate.stringToMonth("january"));
+        assertEquals(DayDate.Month.FEBRUARY,DayDate.stringToMonth("february"));
+        assertEquals(DayDate.Month.MARCH,DayDate.stringToMonth("march"));
+        assertEquals(DayDate.Month.APRIL,DayDate.stringToMonth("april"));
+        assertEquals(DayDate.Month.MAY,DayDate.stringToMonth("may"));
+        assertEquals(DayDate.Month.JUNE,DayDate.stringToMonth("june"));
+        assertEquals(DayDate.Month.JULY,DayDate.stringToMonth("july"));
+        assertEquals(DayDate.Month.AUGUST,DayDate.stringToMonth("august"));
+        assertEquals(DayDate.Month.SEPTEMBER,DayDate.stringToMonth("september"));
+        assertEquals(DayDate.Month.OCTOBER,DayDate.stringToMonth("october"));
+        assertEquals(DayDate.Month.NOVEMBER,DayDate.stringToMonth("november"));
+        assertEquals(DayDate.Month.DECEMBER,DayDate.stringToMonth("december"));
+
+        assertEquals(DayDate.Month.JANUARY,DayDate.stringToMonth("JANUARY"));
+        assertEquals(DayDate.Month.FEBRUARY,DayDate.stringToMonth("FEBRUARY"));
+        assertEquals(DayDate.Month.MARCH,DayDate.stringToMonth("MAR"));
+        assertEquals(DayDate.Month.APRIL,DayDate.stringToMonth("APRIL"));
+        assertEquals(DayDate.Month.MAY,DayDate.stringToMonth("MAY"));
+        assertEquals(DayDate.Month.JUNE,DayDate.stringToMonth("JUNE"));
+        assertEquals(DayDate.Month.JULY,DayDate.stringToMonth("JULY"));
+        assertEquals(DayDate.Month.AUGUST,DayDate.stringToMonth("AUGUST"));
+        assertEquals(DayDate.Month.SEPTEMBER,DayDate.stringToMonth("SEPTEMBER"));
+        assertEquals(DayDate.Month.OCTOBER,DayDate.stringToMonth("OCTOBER"));
+        assertEquals(DayDate.Month.NOVEMBER,DayDate.stringToMonth("NOVEMBER"));
+        assertEquals(DayDate.Month.DECEMBER,DayDate.stringToMonth("DECEMBER"));
     }
 
     public void testIsLeapYear() throws Exception {

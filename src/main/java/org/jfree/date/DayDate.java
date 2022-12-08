@@ -116,7 +116,7 @@ public abstract class DayDate implements Comparable,
      * @return <code>-1</code> if the string is not convertable, the day of 
      *         the week otherwise.
      */
-    public static int stringToWeekdayCode(String s) {
+    public static Day stringToWeekday(String s) {
 
         final String[] shortWeekdayNames 
             = DATE_FORMAT_SYMBOLS.getShortWeekdays();
@@ -134,7 +134,7 @@ public abstract class DayDate implements Comparable,
                 break;
             }
         }
-        return result;
+        return Day.fromInt(result);
 
     }
 
@@ -147,7 +147,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return a string representing the supplied day-of-the-week.
      */
-    public static String weekdayCodeToString(final Day weekday) {
+    public static String weekdayToString(final Day weekday) {
 
         final String[] weekdays = DATE_FORMAT_SYMBOLS.getWeekdays();
         return weekdays[weekday.toInt()];
@@ -191,7 +191,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return the quarter that the month belongs to.
      */
-    public static int monthCodeToQuarter(final Month month) {
+    public static int monthToQuarter(final Month month) {
         return (int) Math.ceil(month.index/3.0);
     }
 
@@ -205,9 +205,9 @@ public abstract class DayDate implements Comparable,
      *
      * @return a string representing the supplied month.
      */
-    public static String monthCodeToString(final Month month) {
+    public static String monthToString(final Month month) {
 
-        return monthCodeToString(month, false);
+        return monthToString(month, false);
 
     }
 
@@ -223,7 +223,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return a string representing the supplied month.
      */
-    public static String monthCodeToString(final Month month, 
+    public static String monthToString(final Month month, 
                                            final boolean shortened) {
         final String[] months;
 
@@ -250,7 +250,7 @@ public abstract class DayDate implements Comparable,
      * @return <code>-1</code> if the string is not parseable, the month of the
      *         year otherwise.
      */
-    public static int stringToMonthCode(String s) {
+    public static Month stringToMonth(String s) {
 
         final String[] shortMonthNames = DATE_FORMAT_SYMBOLS.getShortMonths();
         final String[] monthNames = DATE_FORMAT_SYMBOLS.getMonths();
@@ -281,7 +281,7 @@ public abstract class DayDate implements Comparable,
             }
         }
 
-        return result;
+        return Month.make(result);
 
     }
 
@@ -422,7 +422,7 @@ public abstract class DayDate implements Comparable,
      * Returns the latest date that falls on the specified day-of-the-week and 
      * is BEFORE the base date.
      *
-     * @param targetWeekday  a code for the target day-of-the-week.
+     * @param targetWeekday  a day for the target day-of-the-week.
      * @param base  the base date.
      *
      * @return the latest date that falls on the specified day-of-the-week and 
@@ -449,7 +449,7 @@ public abstract class DayDate implements Comparable,
      * Returns the earliest date that falls on the specified day-of-the-week
      * and is AFTER the base date.
      *
-     * @param targetWeekday  a code for the target day-of-the-week.
+     * @param targetWeekday  a day for the target day-of-the-week.
      * @param base  the base date.
      *
      * @return the earliest date that falls on the specified day-of-the-week 
@@ -475,7 +475,7 @@ public abstract class DayDate implements Comparable,
      * Returns the date that falls on the specified day-of-the-week and is
      * CLOSEST to the base date.
      *
-     * @param targetDOW  a code for the target day-of-the-week.
+     * @param targetDOW  a day for the target day-of-the-week.
      * @param base  the base date.
      *
      * @return the date that falls on the specified day-of-the-week and is 
@@ -509,13 +509,13 @@ public abstract class DayDate implements Comparable,
     }
 
     /**
-     * Returns a string corresponding to the week-in-the-month code.
+     * Returns a string corresponding to the week-in-the-month.
      * <P>
      * Need to find a better approach.
      *
-     * @param count  an integer code representing the week-in-the-month.
+     * @param count  the week-in-the-month.
      *
-     * @return a string corresponding to the week-in-the-month code.
+     * @return a string corresponding to the week-in-the-month .
      */
     public static String weekInMonthToString(final WeekInMonth count) throws IllegalArgumentException{
 
@@ -595,7 +595,7 @@ public abstract class DayDate implements Comparable,
      * @return  a string representation of the date.
      */
     public String toString() {
-        return getDayOfMonth() + "-" + DayDate.monthCodeToString(getMonth())
+        return getDayOfMonth() + "-" + DayDate.monthToString(getMonth())
                                + "-" + getYYYY();
     }
 
