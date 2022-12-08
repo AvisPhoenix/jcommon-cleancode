@@ -222,13 +222,6 @@ public class BobsSerialDateTest extends TestCase {
         assertEquals(12,DayDate.stringToMonthCode("DECEMBER"));
     }
 
-    public void testIsValidWeekInMonthCode() throws Exception {
-        for (int w = 1; w <= 4; w++) {
-            assertTrue(DayDate.isValidWeekInMonthCode(DayDate.Month.make(w)));
-        }
-        assertFalse(DayDate.isValidWeekInMonthCode(DayDate.Month.make(5)));
-    }
-
     public void testIsLeapYear() throws Exception {
         assertFalse(DayDate.isLeapYear(1900));
         assertFalse(DayDate.isLeapYear(1901));
@@ -401,17 +394,11 @@ public class BobsSerialDateTest extends TestCase {
     }
 
     public void testWeekInMonthToString() throws Exception {
-        assertEquals("First", DayDate.weekInMonthToString(DayDate.FIRST_WEEK_IN_MONTH));
-        assertEquals("Second", DayDate.weekInMonthToString(DayDate.SECOND_WEEK_IN_MONTH));
-        assertEquals("Third", DayDate.weekInMonthToString(DayDate.THIRD_WEEK_IN_MONTH));
-        assertEquals("Fourth", DayDate.weekInMonthToString(DayDate.FOURTH_WEEK_IN_MONTH));
-        assertEquals("Last", DayDate.weekInMonthToString(DayDate.LAST_WEEK_IN_MONTH));
-
-        try {
-            DayDate.weekInMonthToString(-1);
-            fail("Invalid week code should throw exception");
-        } catch (IllegalArgumentException e) {
-        }
+        assertEquals("First", DayDate.weekInMonthToString(WeekInMonth.FIRST));
+        assertEquals("Second", DayDate.weekInMonthToString(WeekInMonth.SECOND));
+        assertEquals("Third", DayDate.weekInMonthToString(WeekInMonth.THIRD));
+        assertEquals("Fourth", DayDate.weekInMonthToString(WeekInMonth.FOURTH));
+        assertEquals("Last", DayDate.weekInMonthToString(WeekInMonth.LAST));
     }
 
     public void testRelativeToString() throws Exception {
