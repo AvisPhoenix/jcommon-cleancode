@@ -402,15 +402,9 @@ public class BobsSerialDateTest extends TestCase {
     }
 
     public void testRelativeToString() throws Exception {
-        assertEquals("Preceding", DayDate.relativeToString(DayDate.PRECEDING));
-        assertEquals("Nearest", DayDate.relativeToString(DayDate.NEAREST));
-        assertEquals("Following", DayDate.relativeToString(DayDate.FOLLOWING));
-
-        try {
-            DayDate.relativeToString(-1000);
-            fail("Invalid relative code should throw exception");
-        } catch (IllegalArgumentException e) {
-        }
+        assertEquals("Preceding", DayDate.relativeToString( WeekdayRange.LAST));
+        assertEquals("Nearest", DayDate.relativeToString( WeekdayRange.NEAREST));
+        assertEquals("Following", DayDate.relativeToString( WeekdayRange.NEXT));
     }
 
 }
