@@ -63,6 +63,7 @@ import javax.swing.SwingConstants;
 import org.jfree.date.DayDate;
 import org.jfree.date.Day;
 import org.jfree.date.DayDateFactory;
+import org.jfree.date.Month;
 
 /**
  * A panel that allows the user to select a date.
@@ -199,7 +200,7 @@ public class SerialDateChooserPanel extends JPanel implements ActionListener {
         if (e.getActionCommand().equals("monthSelectionChanged")) {
             final JComboBox c = (JComboBox) e.getSource();
             this.date = DayDateFactory.makeDate(
-                this.date.getDayOfMonth(), DayDate.Month.make(c.getSelectedIndex() + 1), this.date.getYYYY()
+                this.date.getDayOfMonth(), Month.make(c.getSelectedIndex() + 1), this.date.getYYYY()
             );
             refreshButtons();
         }
@@ -364,7 +365,7 @@ public class SerialDateChooserPanel extends JPanel implements ActionListener {
      */
     private JPanel constructSelectionPanel() {
         final JPanel p = new JPanel();
-        this.monthSelector = new JComboBox(DayDate.getMonths());
+        this.monthSelector = new JComboBox(Month.getMonthNames());
         this.monthSelector.addActionListener(this);
         this.monthSelector.setActionCommand("monthSelectionChanged");
         p.add(this.monthSelector);

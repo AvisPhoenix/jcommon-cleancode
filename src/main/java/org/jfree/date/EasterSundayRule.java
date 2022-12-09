@@ -83,7 +83,7 @@ public class EasterSundayRule extends AnnualDateRule {
         final int l = i - j;
         final int month = 3 + (l + 40) / 44;
         final int day = l + 28 - 31 * (month / 4);
-        return DayDateFactory.makeDate(day, DayDate.Month.make(month), year);
+        return DayDateFactory.makeDate(day, Month.make(month), year);
     }
 
 }

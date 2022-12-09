@@ -44,7 +44,7 @@
 
 package org.jfree.date;
 
-import org.jfree.date.DayDate.Month;
+import org.jfree.date.Month;
 
 /**
  * An annual date rule that specifies the nth day of the week in a given month

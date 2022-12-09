@@ -45,7 +45,7 @@
 
 package org.jfree.date;
 
-import org.jfree.date.DayDate.Month;
+import org.jfree.date.Month;
 
 /**
  * An annual date rule where the generated date always falls on the same day

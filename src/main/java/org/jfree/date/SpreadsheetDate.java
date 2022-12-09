@@ -159,7 +159,7 @@ public class SpreadsheetDate extends DayDate {
      * @param year  the year (in the range 1900 to 9999).
      */
     public SpreadsheetDate(final int day, final int month, final int year) {
-        this(day,DayDate.Month.make(month), year);
+        this(day,Month.make(month), year);
     }
 
     /**
@@ -462,7 +462,7 @@ public class SpreadsheetDate extends DayDate {
     private int calcSerial(final int d, final int m, final int y) {
         final int yy = ((y - 1900) * 365) + DayDate.leapYearCount(y - 1);
         int mm = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m];
-        if (m > DayDate.Month.FEBRUARY.index) {
+        if (m > Month.FEBRUARY.index) {
             if (DayDate.isLeapYear(y)) {
                 mm = mm + 1;
             }

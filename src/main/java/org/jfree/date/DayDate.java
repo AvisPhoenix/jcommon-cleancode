@@ -39,8 +39,6 @@
 package org.jfree.date;
 
 import java.io.Serializable;
-import java.text.DateFormatSymbols;
-import java.text.SimpleDateFormat;
 
 /**
  * <pre>
@@ -64,142 +62,11 @@ import java.text.SimpleDateFormat;
  */
 public abstract class DayDate implements Comparable, 
                                          Serializable {
-    public enum Month {
-        JANUARY(1),
-        FEBRUARY(2),
-        MARCH(3),
-        APRIL(4),
-        MAY(5),
-        JUNE(6),
-        JULY(7),
-        AUGUST(8),
-        SEPTEMBER(9),
-        OCTOBER(10),
-        NOVEMBER(11),
-        DECEMBER(12);
-
-        Month(int index) {
-            this.index = index;
-        }
-
-        public static Month make(int monthIndex) {
-            for (Month m : Month.values()) {
-                if (m.index == monthIndex)
-                    return m;
-            }
-            throw new IllegalArgumentException("Invalid month index " + monthIndex);
-        }
-
-        public final int index;
-      
-    }
-
-    private static DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
 
     private static final int[] LAST_DAY_OF_MONTH =
         {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     private String description;
-
-    public static String[] getMonthNames() {
-        return dateFormatSymbols.getMonths();
-    }
-
-    /**
-     * Returns the quarter for the specified month.
-     *
-     * @param code  the month code (1-12).
-     *
-     * @return the quarter that the month belongs to.
-     */
-    public static int monthToQuarter(Month month) {
-        return (int) Math.ceil(month.index/3.0);
-    }
-
-    /**
-     * Returns a string representing the supplied month.
-     * <P>
-     * The string returned is the long form of the month name taken from the 
-     * default locale.
-     *
-     * @param month  the month.
-     *
-     * @return a string representing the supplied month.
-     */
-    public static String monthToString(Month month) {
-
-        return monthToString(month, false);
-
-    }
-
-    /**
-     * Returns a string representing the supplied month.
-     * <P>
-     * The string returned is the long or short form of the month name taken 
-     * from the default locale.
-     *
-     * @param month  the month.
-     * @param shortened  if <code>true</code> return the abbreviation of the 
-     *                   month.
-     *
-     * @return a string representing the supplied month.
-     */
-    public static String monthToString( Month month, 
-                                        boolean shortened ) {
-        String[] months;
-
-        if (shortened) {
-            months = dateFormatSymbols.getShortMonths();
-        }
-        else {
-            months = dateFormatSymbols.getMonths();
-        }
-
-        return months[month.index - 1];
-
-    }
-
-    /**
-     * Converts a string to a month code.
-     * <P>
-     * This method will return one of the constants JANUARY, FEBRUARY, ..., 
-     * DECEMBER that corresponds to the string.  If the string is not 
-     * recognised, this method returns -1.
-     *
-     * @param s  the string to parse.
-     *
-     * @return the month of the year. In case cannot be parse throw IllegalArgumentException
-     */
-    public static Month stringToMonth(String s) {
-
-        String[] shortMonthNames = dateFormatSymbols.getShortMonths();
-        String[] monthNames = dateFormatSymbols.getMonths();
-
-        int result = -1;
-        s = s.trim();
-
-        // first try parsing the string as an integer (1-12)...
-        try {
-            result = Integer.parseInt(s);
-        }
-        catch (NumberFormatException e) {
-            // suppress
-        }
-
-        // now search through the month names...
-        if ((result < 1) || (result > 12)) {
-            result = -1;
-            for (int i = 0; i < monthNames.length; i++) {
-                if (s.equalsIgnoreCase(shortMonthNames[i]) || s.equalsIgnoreCase(monthNames[i])) {
-                    result = i + 1;
-                    break;
-                }
-            }
-        }
-
-        return Month.make(result);
-
-    }
 
     /**
      * Determines whether or not the specified year is a leap year.
@@ -511,7 +378,7 @@ public abstract class DayDate implements Comparable,
      * @return  a string representation of the date.
      */
     public String toString() {
-        return getDayOfMonth() + "-" + DayDate.monthToString(getMonth())
+        return getDayOfMonth() + "-" + getMonth().toString()
                                + "-" + getYYYY();
     }
 
