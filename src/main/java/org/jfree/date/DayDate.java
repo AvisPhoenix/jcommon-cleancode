@@ -91,89 +91,18 @@ public abstract class DayDate implements Comparable,
         }
 
         public final int index;
+      
     }
-    
-    public static final DateFormatSymbols
-        DATE_FORMAT_SYMBOLS = new SimpleDateFormat().getDateFormatSymbols();
+
+    private static DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
 
     private static final int[] LAST_DAY_OF_MONTH =
         {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     private String description;
 
-    /**
-     * Converts the supplied string to a day of the week.
-     *
-     * @param s  a string representing the day of the week.
-     *
-     * @return The day of the week. if string is invalid throw IllegalArgumentException
-     */
-    public static Day stringToWeekday(String s) {
-
-        String[] shortWeekdayNames 
-            = DATE_FORMAT_SYMBOLS.getShortWeekdays();
-        String[] weekDayNames = DATE_FORMAT_SYMBOLS.getWeekdays();
-
-        int result = -1;
-        s = s.trim();
-        for (int i = 0; i < weekDayNames.length; i++) {
-            if (s.equalsIgnoreCase(shortWeekdayNames[i])) {
-                result = i;
-                break;
-            }
-            if (s.equalsIgnoreCase(weekDayNames[i])) {
-                result = i;
-                break;
-            }
-        }
-        return Day.fromInt(result);
-
-    }
-
-    /**
-     * Returns a string representing the supplied day-of-the-week.
-     * <P>
-     * Need to find a better approach.
-     *
-     * @param weekday  the day of the week.
-     *
-     * @return a string representing the supplied day-of-the-week.
-     */
-    public static String weekdayToString(Day weekday) {
-
-        String[] weekdays = DATE_FORMAT_SYMBOLS.getWeekdays();
-        return weekdays[weekday.toInt()];
-
-    }
-
-    /**
-     * Returns an array of month names.
-     *
-     * @return an array of month names.
-     */
-    public static String[] getMonths() {
-
-        return getMonths(false);
-
-    }
-
-    /**
-     * Returns an array of month names.
-     *
-     * @param shortened  a flag indicating that shortened month names should 
-     *                   be returned.
-     *
-     * @return an array of month names.
-     */
-    public static String[] getMonths(boolean shortened) {
-
-        if (shortened) {
-            return DATE_FORMAT_SYMBOLS.getShortMonths();
-        }
-        else {
-            return DATE_FORMAT_SYMBOLS.getMonths();
-        }
-
+    public static String[] getMonthNames() {
+        return dateFormatSymbols.getMonths();
     }
 
     /**
@@ -220,10 +149,10 @@ public abstract class DayDate implements Comparable,
         String[] months;
 
         if (shortened) {
-            months = DATE_FORMAT_SYMBOLS.getShortMonths();
+            months = dateFormatSymbols.getShortMonths();
         }
         else {
-            months = DATE_FORMAT_SYMBOLS.getMonths();
+            months = dateFormatSymbols.getMonths();
         }
 
         return months[month.index - 1];
@@ -243,8 +172,8 @@ public abstract class DayDate implements Comparable,
      */
     public static Month stringToMonth(String s) {
 
-        String[] shortMonthNames = DATE_FORMAT_SYMBOLS.getShortMonths();
-        String[] monthNames = DATE_FORMAT_SYMBOLS.getMonths();
+        String[] shortMonthNames = dateFormatSymbols.getShortMonths();
+        String[] monthNames = dateFormatSymbols.getMonths();
 
         int result = -1;
         s = s.trim();
@@ -261,11 +190,7 @@ public abstract class DayDate implements Comparable,
         if ((result < 1) || (result > 12)) {
             result = -1;
             for (int i = 0; i < monthNames.length; i++) {
-                if (s.equalsIgnoreCase(shortMonthNames[i])) {
-                    result = i + 1;
-                    break;
-                }
-                if (s.equalsIgnoreCase(monthNames[i])) {
+                if (s.equalsIgnoreCase(shortMonthNames[i]) || s.equalsIgnoreCase(monthNames[i])) {
                     result = i + 1;
                     break;
                 }

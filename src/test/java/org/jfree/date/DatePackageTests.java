@@ -61,7 +61,8 @@ public class DatePackageTests extends TestCase {
     public static Test suite() {
         final TestSuite suite = new TestSuite("org.jfree.date");
         suite.addTestSuite(SerialDateTest.class);
-        suite.addTestSuite(BobsSerialDateTest.class);
+        suite.addTestSuite(BobsDayTest.class);
+        suite.addTestSuite(BobsDayDateTest.class);
         suite.addTestSuite(SerialDateUtilitiesTest.class);
         suite.addTestSuite(SpreadsheetDateTest.class);
         return suite;
