@@ -121,9 +121,7 @@ public class SerialDateTest extends TestCase {
      * Monday preceding Friday 9 November 2001 should be 5 November.
      */
     public void testMondayPrecedingFriday9Nov2001() {
-        DayDate mondayBefore = DayDate.getPreviousDayOfWeek(
-            Day.MONDAY, this.nov9Y2001
-        );
+        DayDate mondayBefore = this.nov9Y2001.getPreviousDayOfWeek( Day.MONDAY );
         assertEquals(5, mondayBefore.getDayOfMonth());
     }
 
@@ -131,9 +129,7 @@ public class SerialDateTest extends TestCase {
      * Monday following Friday 9 November 2001 should be 12 November.
      */
     public void testMondayFollowingFriday9Nov2001() {
-        DayDate mondayAfter = DayDate.getFollowingDayOfWeek(
-            Day.MONDAY, this.nov9Y2001
-        );
+        DayDate mondayAfter = this.nov9Y2001.getFollowingDayOfWeek( Day.MONDAY );
         assertEquals(12, mondayAfter.getDayOfMonth());
     }
 
@@ -141,9 +137,7 @@ public class SerialDateTest extends TestCase {
      * Monday nearest Friday 9 November 2001 should be 12 November.
      */
     public void testMondayNearestFriday9Nov2001() {
-        DayDate mondayNearest = DayDate.getNearestDayOfWeek(
-            Day.MONDAY, this.nov9Y2001
-        );
+        DayDate mondayNearest = this.nov9Y2001.getNearestDayOfWeek( Day.MONDAY );
         assertEquals(12, mondayNearest.getDayOfMonth());
     }
 
@@ -152,7 +146,7 @@ public class SerialDateTest extends TestCase {
      */
     public void testMondayNearest22Jan1970() {
         DayDate jan22Y1970 = DayDateFactory.makeDate(22, Month.JANUARY, 1970);
-        DayDate mondayNearest = DayDate.getNearestDayOfWeek(Day.MONDAY, jan22Y1970);
+        DayDate mondayNearest = jan22Y1970.getNearestDayOfWeek(Day.MONDAY);
         assertEquals(19, mondayNearest.getDayOfMonth());
     }
 

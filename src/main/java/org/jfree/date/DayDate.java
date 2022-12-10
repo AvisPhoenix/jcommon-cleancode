@@ -104,11 +104,8 @@ public abstract class DayDate implements Comparable,
      *
      * @return a new date.
      */
-    public static DayDate addDays(int days, DayDate base) {
-
-        int serialDayNumber = base.toSerial() + days;
-        return DayDateFactory.makeDate(serialDayNumber);
-
+    public DayDate addDays(int days) {
+        return DayDateFactory.makeDate(toOrdinal() + days);
     }
 
     /**
@@ -171,12 +168,11 @@ public abstract class DayDate implements Comparable,
      * @return the latest date that falls on the specified day-of-the-week and 
      *         is BEFORE the base date.
      */
-    public static DayDate getPreviousDayOfWeek( Day targetWeekday, 
-                                                DayDate base ) {
+    public DayDate getPreviousDayOfWeek( Day targetWeekday ) {
 
         // find the date...
         int adjust;
-        Day baseDOW = base.getDayOfWeek();
+        Day baseDOW = getDayOfWeek();
         if (baseDOW.toInt() > targetWeekday.toInt()) {
             adjust = Math.min(0, targetWeekday.toInt() - baseDOW.toInt());
         }
@@ -184,7 +180,7 @@ public abstract class DayDate implements Comparable,
             adjust = -7 + Math.max(0, targetWeekday.toInt() - baseDOW.toInt());
         }
 
-        return DayDate.addDays(adjust, base);
+        return addDays(adjust);
 
     }
 
@@ -198,12 +194,11 @@ public abstract class DayDate implements Comparable,
      * @return the earliest date that falls on the specified day-of-the-week 
      *         and is AFTER the base date.
      */
-    public static DayDate getFollowingDayOfWeek( Day targetWeekday, 
-                                                 DayDate base ) {
+    public DayDate getFollowingDayOfWeek( Day targetWeekday ) {
 
         // find the date...
         int adjust;
-        Day baseDOW = base.getDayOfWeek();
+        Day baseDOW = getDayOfWeek();
         if (baseDOW.toInt() >= targetWeekday.toInt()) {
             adjust = 7 + Math.min(0, targetWeekday.toInt() - baseDOW.toInt());
         }
@@ -211,7 +206,7 @@ public abstract class DayDate implements Comparable,
             adjust = Math.max(0, targetWeekday.toInt() - baseDOW.toInt());
         }
 
-        return DayDate.addDays(adjust, base);
+        return addDays(adjust);
     }
 
     /**
@@ -224,17 +219,16 @@ public abstract class DayDate implements Comparable,
      * @return the date that falls on the specified day-of-the-week and is 
      *         CLOSEST to the base date.
      */
-    public static DayDate getNearestDayOfWeek( Day targetDOW,  
-                                               DayDate base ) {
+    public DayDate getNearestDayOfWeek( Day targetDOW ) {
 
 
         // find the date...
-        int delta = targetDOW.toInt() - base.getDayOfWeek().toInt();
+        int delta = targetDOW.toInt() - getDayOfWeek().toInt();
         int positiveDelta = delta + 7;
         int adjust = positiveDelta % 7;
         if (adjust > 3)
             adjust -= 7;
-        return DayDate.addDays(adjust, base);
+        return addDays(adjust);
     }
 
     /**
@@ -301,7 +295,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return the serial number for the date.
      */
-    public abstract int toSerial();
+    public abstract int toOrdinal();
 
     /**
      * Returns a java.util.Date.  Since java.util.Date has more precision than
@@ -464,42 +458,5 @@ public abstract class DayDate implements Comparable,
      */
     public abstract boolean isInRange(DayDate d1, DayDate d2, 
                                       DateInterval include);
-
-    /**
-     * Returns the latest date that falls on the specified day-of-the-week and
-     * is BEFORE this date.
-     *
-     * @param targetDOW  a code for the target day-of-the-week.
-     *
-     * @return the latest date that falls on the specified day-of-the-week and
-     *         is BEFORE this date.
-     */
-    public DayDate getPreviousDayOfWeek(Day targetDOW) {
-        return getPreviousDayOfWeek(targetDOW, this);
-    }
-
-    /**
-     * Returns the earliest date that falls on the specified day-of-the-week
-     * and is AFTER this date.
-     *
-     * @param targetDOW  a code for the target day-of-the-week.
-     *
-     * @return the earliest date that falls on the specified day-of-the-week
-     *         and is AFTER this date.
-     */
-    public DayDate getFollowingDayOfWeek(Day targetDOW) {
-        return getFollowingDayOfWeek(targetDOW, this);
-    }
-
-    /**
-     * Returns the nearest date that falls on the specified day-of-the-week.
-     *
-     * @param targetDOW  a code for the target day-of-the-week.
-     *
-     * @return the nearest date that falls on the specified day-of-the-week.
-     */
-    public DayDate getNearestDayOfWeek(Day targetDOW) {
-        return getNearestDayOfWeek(targetDOW, this);
-    }
 
 }
