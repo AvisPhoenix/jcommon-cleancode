@@ -32,6 +32,8 @@ public enum Month {
 
     private static DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
 
+    private static final int[] LAST_DAY_OF_MONTH = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
     public int quarter() {
         return 1 + (index - 1) / 3;
     }
@@ -52,9 +54,9 @@ public enum Month {
                 return m;
         try {
             return make(Integer.parseInt(s));
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid month " + s);
         }
-        throw new IllegalArgumentException("Invalid month " + s);
     }
 
     private boolean matches(String s) {
@@ -65,4 +67,9 @@ public enum Month {
     public static String[] getMonthNames() {
         return dateFormatSymbols.getMonths();
     }
+
+    public int lastDay(){
+        return LAST_DAY_OF_MONTH[index];
+    }
+    
 }

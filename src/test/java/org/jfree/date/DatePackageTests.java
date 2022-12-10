@@ -63,6 +63,7 @@ public class DatePackageTests extends TestCase {
         suite.addTestSuite(SerialDateTest.class);
         suite.addTestSuite(BobsDayTest.class);
         suite.addTestSuite(BobsDayDateTest.class);
+        suite.addTestSuite(BobsSpreadsheetDateTest.class);
         suite.addTestSuite(SerialDateUtilitiesTest.class);
         suite.addTestSuite(SpreadsheetDateTest.class);
         return suite;
