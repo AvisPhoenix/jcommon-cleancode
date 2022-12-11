@@ -206,31 +206,8 @@ public abstract class DayDate implements Comparable,
         Month month = getMonth();
         int year = getYear();
         int lastDay = lastDayOfMonth(month, year);
-        
+
         return DayDateFactory.makeDate(lastDay, month, year);
-    }
-
-    /**
-     * Returns a string corresponding to the week-in-the-month.
-     * <P>
-     * Need to find a better approach.
-     *
-     * @param count  the week-in-the-month.
-     *
-     * @return a string corresponding to the week-in-the-month .
-     */
-    public static String weekInMonthToString(WeekInMonth count) throws IllegalArgumentException{
-
-        switch (count) {
-            case FIRST : return "First";
-            case SECOND : return "Second";
-            case THIRD : return "Third";
-            case FOURTH : return "Fourth";
-            case LAST : return "Last";
-            default :
-                throw new IllegalArgumentException();
-        }
-
     }
 
     /**
