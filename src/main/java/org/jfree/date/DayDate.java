@@ -68,7 +68,7 @@ public abstract class DayDate implements Comparable,
     /**
      * Determines whether or not the specified year is a leap year.
      *
-     * @param yyyy  the year (in the range 1900 to 9999).
+     * @param year  the year (in the range 1900 to 9999).
      *
      * @return <code>true</code> if the specified year is a leap year.
      */
@@ -100,7 +100,6 @@ public abstract class DayDate implements Comparable,
      * date.
      *
      * @param days  the number of days to add (can be negative).
-     * @param base  the base date.
      *
      * @return a new date.
      */
@@ -116,7 +115,6 @@ public abstract class DayDate implements Comparable,
      * may be adjusted slightly:  31 May + 1 month = 30 June.
      *
      * @param months  the number of months to add (can be negative).
-     * @param base  the base date.
      *
      * @return a new date.
      */
@@ -136,7 +134,6 @@ public abstract class DayDate implements Comparable,
      * date.
      *
      * @param years  the number of years to add (can be negative).
-     * @param base  the base date.
      *
      * @return A new date.
      */
@@ -152,87 +149,65 @@ public abstract class DayDate implements Comparable,
      * Returns the latest date that falls on the specified day-of-the-week and 
      * is BEFORE the base date.
      *
-     * @param targetWeekday  a day for the target day-of-the-week.
-     * @param base  the base date.
+     * @param targetDayOfWeek  a day for the target day-of-the-week.
      *
      * @return the latest date that falls on the specified day-of-the-week and 
      *         is BEFORE the base date.
      */
-    public DayDate getPreviousDayOfWeek( Day targetWeekday ) {
-
-        // find the date...
-        int adjust;
-        Day baseDOW = getDayOfWeek();
-        if (baseDOW.toInt() > targetWeekday.toInt()) {
-            adjust = Math.min(0, targetWeekday.toInt() - baseDOW.toInt());
-        }
-        else {
-            adjust = -7 + Math.max(0, targetWeekday.toInt() - baseDOW.toInt());
-        }
-
-        return plusDays(adjust);
-
+    public DayDate getPreviousDayOfWeek(Day targetDayOfWeek) {
+        int offsetToTarget = targetDayOfWeek.toInt() - getDayOfWeek().toInt();
+        if (offsetToTarget >= 0)
+            offsetToTarget -= 7;
+        return plusDays(offsetToTarget);
     }
 
     /**
      * Returns the earliest date that falls on the specified day-of-the-week
      * and is AFTER the base date.
      *
-     * @param targetWeekday  a day for the target day-of-the-week.
-     * @param base  the base date.
+     * @param targetDayOfWeek  a day for the target day-of-the-week.
      *
      * @return the earliest date that falls on the specified day-of-the-week 
      *         and is AFTER the base date.
      */
-    public DayDate getFollowingDayOfWeek( Day targetWeekday ) {
-
-        // find the date...
-        int adjust;
-        Day baseDOW = getDayOfWeek();
-        if (baseDOW.toInt() >= targetWeekday.toInt()) {
-            adjust = 7 + Math.min(0, targetWeekday.toInt() - baseDOW.toInt());
-        }
-        else {
-            adjust = Math.max(0, targetWeekday.toInt() - baseDOW.toInt());
-        }
-
-        return plusDays(adjust);
+    public DayDate getFollowingDayOfWeek(Day targetDayOfWeek) {
+        int offsetToTarget = targetDayOfWeek.toInt() - getDayOfWeek().toInt();
+        if (offsetToTarget <= 0)
+            offsetToTarget += 7;
+        return plusDays(offsetToTarget);
     }
 
     /**
      * Returns the date that falls on the specified day-of-the-week and is
      * CLOSEST to the base date.
      *
-     * @param targetDOW  a day for the target day-of-the-week.
-     * @param base  the base date.
+     * @param targetDay  a day for the target day-of-the-week.
      *
      * @return the date that falls on the specified day-of-the-week and is 
      *         CLOSEST to the base date.
      */
-    public DayDate getNearestDayOfWeek( Day targetDOW ) {
+    public DayDate getNearestDayOfWeek(Day targetDay) {
+        int offsetToThisWeeksTarget = targetDay.toInt() - getDayOfWeek().toInt();
+        int offsetToFutureTarget = (offsetToThisWeeksTarget + 7) % 7;
+        int offsetToPreviousTarget = offsetToFutureTarget - 7;
 
-
-        // find the date...
-        int delta = targetDOW.toInt() - getDayOfWeek().toInt();
-        int positiveDelta = delta + 7;
-        int adjust = positiveDelta % 7;
-        if (adjust > 3)
-            adjust -= 7;
-        return plusDays(adjust);
+        if (offsetToFutureTarget > 3)
+            return plusDays(offsetToPreviousTarget);
+        else
+            return plusDays(offsetToFutureTarget);
     }
 
     /**
      * Rolls the date forward to the last day of the month.
      *
-     * @param base  the base date.
-     *
      * @return a new serial date.
      */
-    public DayDate getEndOfCurrentMonth(DayDate base) {
-        int last = DayDate.lastDayOfMonth(
-            base.getMonth(), base.getYear()
-        );
-        return DayDateFactory.makeDate(last, base.getMonth(), base.getYear());
+    public DayDate getEndOfMonth() {
+        Month month = getMonth();
+        int year = getYear();
+        int lastDay = lastDayOfMonth(month, year);
+        
+        return DayDateFactory.makeDate(lastDay, month, year);
     }
 
     /**
