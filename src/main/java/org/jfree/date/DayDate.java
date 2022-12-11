@@ -289,7 +289,14 @@ public abstract class DayDate implements Comparable,
      *
      * @return the day of the week.
      */
-    public abstract Day getDayOfWeek();
+    public Day getDayOfWeek() {
+        Day startingDay = getDayOfWeekForOrdinalZero();
+        int startingOffset = startingDay.toInt() - Day.SUNDAY.toInt();
+
+        return Day.fromInt((getOrdinalDay() + startingOffset) % 7 + 1);
+    }
+
+    public abstract Day getDayOfWeekForOrdinalZero();
 
     /**
      * Returns the difference (in days) between this date and the specified 
