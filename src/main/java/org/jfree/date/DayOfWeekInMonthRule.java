@@ -146,9 +146,9 @@ public class DayOfWeekInMonthRule extends AnnualDateRule {
             // start at the beginning of the month
             result = DayDateFactory.makeDate(1, this.month, year);
             while (result.getDayOfWeek() != this.dayOfWeek) {
-                result = result.addDays(1 );
+                result = result.plusDays(1 );
             }
-            result = result.addDays(7 * (this.count - 1));
+            result = result.plusDays(7 * (this.count - 1));
 
         }
         else {
@@ -156,7 +156,7 @@ public class DayOfWeekInMonthRule extends AnnualDateRule {
             result = DayDateFactory.makeDate(1, this.month, year);
             result = result.getEndOfCurrentMonth(result);
             while (result.getDayOfWeek() != this.dayOfWeek) {
-                result = result.addDays(-1);
+                result = result.plusDays(-1);
             }
 
         }

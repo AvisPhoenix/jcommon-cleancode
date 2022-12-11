@@ -104,7 +104,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return a new date.
      */
-    public DayDate addDays(int days) {
+    public DayDate plusDays(int days) {
         return DayDateFactory.makeDate(toOrdinal() + days);
     }
 
@@ -120,7 +120,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return a new date.
      */
-    public DayDate addMonths( int months ) {
+    public DayDate plusMonths( int months ) {
         int thisMonthAsOrdinal = 12 * getYear() + getMonth().index - 1;
         int resultMonthAsOrdinal = thisMonthAsOrdinal + months;
         int resultYear = resultMonthAsOrdinal / 12;
@@ -140,7 +140,7 @@ public abstract class DayDate implements Comparable,
      *
      * @return A new date.
      */
-    public DayDate addYears(int years) {
+    public DayDate plusYears(int years) {
         int resultYear = getYear() + years;
         int lastDayOfMonthInResultYear = lastDayOfMonth(getMonth(), resultYear);
         int resultDay = Math.min(getDayOfMonth(), lastDayOfMonthInResultYear);
@@ -170,7 +170,7 @@ public abstract class DayDate implements Comparable,
             adjust = -7 + Math.max(0, targetWeekday.toInt() - baseDOW.toInt());
         }
 
-        return addDays(adjust);
+        return plusDays(adjust);
 
     }
 
@@ -196,7 +196,7 @@ public abstract class DayDate implements Comparable,
             adjust = Math.max(0, targetWeekday.toInt() - baseDOW.toInt());
         }
 
-        return addDays(adjust);
+        return plusDays(adjust);
     }
 
     /**
@@ -218,7 +218,7 @@ public abstract class DayDate implements Comparable,
         int adjust = positiveDelta % 7;
         if (adjust > 3)
             adjust -= 7;
-        return addDays(adjust);
+        return plusDays(adjust);
     }
 
     /**
