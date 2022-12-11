@@ -39,6 +39,7 @@
 package org.jfree.date;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 /**
  * <pre>
@@ -225,7 +226,11 @@ public abstract class DayDate implements Comparable,
      *
      * @return this as <code>java.util.Date</code>.
      */
-    public abstract java.util.Date toDate();
+    public java.util.Date toDate(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(getYear(), getMonth().index - 1, getDayOfMonth(), 0, 0, 0);
+        return calendar.getTime();
+    }
 
     /**
      * Returns the description that is attached to the date.  It is not 
