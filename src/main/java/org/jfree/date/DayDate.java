@@ -211,26 +211,6 @@ public abstract class DayDate implements Comparable,
     }
 
     /**
-     * Returns a string representing the supplied 'relative'.
-     * <P>
-     * Need to find a better approach.
-     *
-     * @param relative  a constant representing the 'relative'.
-     *
-     * @return a string representing the supplied 'relative'.
-     */
-    public static String relativeToString(WeekdayRange relative) throws IllegalArgumentException {
-
-        switch (relative) {
-            case LAST : return "Preceding";
-            case NEAREST : return "Nearest";
-            case NEXT : return "Following";
-            default : throw new IllegalArgumentException();
-        }
-
-    }
-
-    /**
      * Returns the serial number for the date, where 1 January 1900 = 2 (this
      * corresponds, almost, to the numbering system used in Microsoft Excel for
      * Windows and Lotus 1-2-3).

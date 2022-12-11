@@ -8,16 +8,4 @@ public enum WeekInMonth {
     WeekInMonth(int index) {
         this.index = index;
     }
-
-    @Override
-    public String toString() {
-        switch (this) {
-            case FIRST : return "First";
-            case SECOND : return "Second";
-            case THIRD : return "Third";
-            case FOURTH : return "Fourth";
-            case LAST : return "Last";
-        }
-        return "";
-    }
 }

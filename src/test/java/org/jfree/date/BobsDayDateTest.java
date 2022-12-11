@@ -159,17 +159,17 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testWeekInMonthToString() throws Exception {
-        assertEquals("First", WeekInMonth.FIRST.toString());
-        assertEquals("Second", WeekInMonth.SECOND.toString());
-        assertEquals("Third", WeekInMonth.THIRD.toString());
-        assertEquals("Fourth", WeekInMonth.FOURTH.toString());
-        assertEquals("Last", WeekInMonth.LAST.toString());
+        assertEquals("FIRST", WeekInMonth.FIRST.toString());
+        assertEquals("SECOND", WeekInMonth.SECOND.toString());
+        assertEquals("THIRD", WeekInMonth.THIRD.toString());
+        assertEquals("FOURTH", WeekInMonth.FOURTH.toString());
+        assertEquals("LAST", WeekInMonth.LAST.toString());
     }
 
     public void testRelativeToString() throws Exception {
-        assertEquals("Preceding", DayDate.relativeToString( WeekdayRange.LAST));
-        assertEquals("Nearest", DayDate.relativeToString( WeekdayRange.NEAREST));
-        assertEquals("Following", DayDate.relativeToString( WeekdayRange.NEXT));
+        assertEquals("LAST", WeekdayRange.LAST.toString());
+        assertEquals("NEAREST", WeekdayRange.NEAREST.toString());
+        assertEquals("NEXT", WeekdayRange.NEXT.toString());
     }
 
 }
