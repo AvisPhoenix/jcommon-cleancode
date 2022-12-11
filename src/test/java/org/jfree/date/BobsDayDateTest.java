@@ -142,7 +142,6 @@ public class BobsDayDateTest extends TestCase {
     }
 
     public void testEndOfCurrentMonth() throws Exception {
-        DayDate d = DayDateFactory.makeDate(2);
         assertEquals(d(31, Month.JANUARY, 2006), d(1, Month.JANUARY, 2006).getEndOfMonth());
         assertEquals(d(28, Month.FEBRUARY, 2006), d(1, Month.FEBRUARY, 2006).getEndOfMonth());
         assertEquals(d(31, Month.MARCH, 2006), d(1, Month.MARCH, 2006).getEndOfMonth());
@@ -156,20 +155,6 @@ public class BobsDayDateTest extends TestCase {
         assertEquals(d(30, Month.NOVEMBER, 2006), d(1, Month.NOVEMBER, 2006).getEndOfMonth());
         assertEquals(d(31, Month.DECEMBER, 2006), d(1, Month.DECEMBER, 2006).getEndOfMonth());
         assertEquals(d(29, Month.FEBRUARY, 2008), d(1, Month.FEBRUARY, 2008).getEndOfMonth());
-    }
-
-    public void testWeekInMonthToString() throws Exception {
-        assertEquals("FIRST", WeekInMonth.FIRST.toString());
-        assertEquals("SECOND", WeekInMonth.SECOND.toString());
-        assertEquals("THIRD", WeekInMonth.THIRD.toString());
-        assertEquals("FOURTH", WeekInMonth.FOURTH.toString());
-        assertEquals("LAST", WeekInMonth.LAST.toString());
-    }
-
-    public void testRelativeToString() throws Exception {
-        assertEquals("LAST", WeekdayRange.LAST.toString());
-        assertEquals("NEAREST", WeekdayRange.NEAREST.toString());
-        assertEquals("NEXT", WeekdayRange.NEXT.toString());
     }
 
 }
