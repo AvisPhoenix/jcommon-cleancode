@@ -61,31 +61,30 @@ import java.util.Calendar;
 public abstract class DayDate implements Comparable, 
                                          Serializable {
 
+    /**
+     * Returns the serial number for the date, where 1 January 1900 = 2 (this
+     * corresponds, almost, to the numbering system used in Microsoft Excel for
+     * Windows and Lotus 1-2-3).
+     *
+     * @return the serial number for the date.
+     */
+    public abstract int getOrdinalDay();
+
+    public abstract int getYear();
+
+    public abstract Month getMonth();
+
+    public abstract int getDayOfMonth();
+
+    public abstract Day getDayOfWeekForOrdinalZero();
+
+
     private String description;
 
-    /**
-     * Creates a new date by adding the specified number of days to the base 
-     * date.
-     *
-     * @param days  the number of days to add (can be negative).
-     *
-     * @return a new date.
-     */
     public DayDate plusDays(int days) {
         return DayDateFactory.makeDate(getOrdinalDay() + days);
     }
 
-    /**
-     * Creates a new date by adding the specified number of months to the base 
-     * date.
-     * <P>
-     * If the base date is close to the end of the month, the day on the result
-     * may be adjusted slightly:  31 May + 1 month = 30 June.
-     *
-     * @param months  the number of months to add (can be negative).
-     *
-     * @return a new date.
-     */
     public DayDate plusMonths( int months ) {
         int thisMonthAsOrdinal = 12 * getYear() + getMonth().index - 1;
         int resultMonthAsOrdinal = thisMonthAsOrdinal + months;
@@ -97,14 +96,6 @@ public abstract class DayDate implements Comparable,
         return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
     }
 
-    /**
-     * Creates a new date by adding the specified number of years to the base 
-     * date.
-     *
-     * @param years  the number of years to add (can be negative).
-     *
-     * @return A new date.
-     */
     public DayDate plusYears(int years) {
         int resultYear = getYear() + years;
         int lastDayOfMonthInResultYear = DayUtil.lastDayOfMonth(getMonth(), resultYear);
@@ -113,15 +104,6 @@ public abstract class DayDate implements Comparable,
         return DayDateFactory.makeDate(resultDay, getMonth(), resultYear);
     }
 
-    /**
-     * Returns the latest date that falls on the specified day-of-the-week and 
-     * is BEFORE the base date.
-     *
-     * @param targetDayOfWeek  a day for the target day-of-the-week.
-     *
-     * @return the latest date that falls on the specified day-of-the-week and 
-     *         is BEFORE the base date.
-     */
     public DayDate getPreviousDayOfWeek(Day targetDayOfWeek) {
         int offsetToTarget = targetDayOfWeek.toInt() - getDayOfWeek().toInt();
         if (offsetToTarget >= 0)
@@ -129,15 +111,6 @@ public abstract class DayDate implements Comparable,
         return plusDays(offsetToTarget);
     }
 
-    /**
-     * Returns the earliest date that falls on the specified day-of-the-week
-     * and is AFTER the base date.
-     *
-     * @param targetDayOfWeek  a day for the target day-of-the-week.
-     *
-     * @return the earliest date that falls on the specified day-of-the-week 
-     *         and is AFTER the base date.
-     */
     public DayDate getFollowingDayOfWeek(Day targetDayOfWeek) {
         int offsetToTarget = targetDayOfWeek.toInt() - getDayOfWeek().toInt();
         if (offsetToTarget <= 0)
@@ -145,15 +118,6 @@ public abstract class DayDate implements Comparable,
         return plusDays(offsetToTarget);
     }
 
-    /**
-     * Returns the date that falls on the specified day-of-the-week and is
-     * CLOSEST to the base date.
-     *
-     * @param targetDay  a day for the target day-of-the-week.
-     *
-     * @return the date that falls on the specified day-of-the-week and is 
-     *         CLOSEST to the base date.
-     */
     public DayDate getNearestDayOfWeek(Day targetDay) {
         int offsetToThisWeeksTarget = targetDay.toInt() - getDayOfWeek().toInt();
         int offsetToFutureTarget = (offsetToThisWeeksTarget + 7) % 7;
@@ -165,11 +129,6 @@ public abstract class DayDate implements Comparable,
             return plusDays(offsetToFutureTarget);
     }
 
-    /**
-     * Rolls the date forward to the last day of the month.
-     *
-     * @return a new serial date.
-     */
     public DayDate getEndOfMonth() {
         Month month = getMonth();
         int year = getYear();
@@ -178,84 +137,25 @@ public abstract class DayDate implements Comparable,
         return DayDateFactory.makeDate(lastDay, month, year);
     }
 
-    /**
-     * Returns the serial number for the date, where 1 January 1900 = 2 (this
-     * corresponds, almost, to the numbering system used in Microsoft Excel for
-     * Windows and Lotus 1-2-3).
-     *
-     * @return the serial number for the date.
-     */
-    public abstract int getOrdinalDay();
-
-    /**
-     * Returns a java.util.Date.  Since java.util.Date has more precision than
-     * SerialDate, we need to define a convention for the 'time of day'.
-     *
-     * @return this as <code>java.util.Date</code>.
-     */
     public java.util.Date toDate(){
         Calendar calendar = Calendar.getInstance();
         calendar.set(getYear(), getMonth().index - 1, getDayOfMonth(), 0, 0, 0);
         return calendar.getTime();
     }
 
-    /**
-     * Returns the description that is attached to the date.  It is not 
-     * required that a date have a description, but for some applications it 
-     * is useful.
-     *
-     * @return The description (possibly <code>null</code>).
-     */
     public String getDescription() {
         return this.description;
     }
 
-    /**
-     * Sets the description for the date.
-     *
-     * @param description  the description for this date (<code>null</code> 
-     *                     permitted).
-     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     * Converts the date to a string.
-     *
-     * @return  a string representation of the date.
-     */
     public String toString() {
         return getDayOfMonth() + "-" + getMonth().toString()
                                + "-" + getYear();
     }
 
-    /**
-     * Returns the year (assume a valid range of 1900 to 9999).
-     *
-     * @return the year.
-     */
-    public abstract int getYear();
-
-    /**
-     * Returns the month (January = 1, February = 2, March = 3).
-     *
-     * @return the month of the year.
-     */
-    public abstract Month getMonth();
-
-    /**
-     * Returns the day of the month.
-     *
-     * @return the day of the month.
-     */
-    public abstract int getDayOfMonth();
-
-    /**
-     * Returns the day of the week.
-     *
-     * @return the day of the week.
-     */
     public Day getDayOfWeek() {
         Day startingDay = getDayOfWeekForOrdinalZero();
         int startingOffset = startingDay.toInt() - Day.SUNDAY.toInt();
@@ -263,114 +163,34 @@ public abstract class DayDate implements Comparable,
         return Day.fromInt((getOrdinalDay() + startingOffset) % 7 + 1);
     }
 
-    public abstract Day getDayOfWeekForOrdinalZero();
-
-    /**
-     * Returns the difference (in days) between this date and the specified 
-     * 'other' date.
-     * <P>
-     * The result is positive if this date is after the 'other' date and
-     * negative if it is before the 'other' date.
-     *
-     * @param other  the date being compared to.
-     *
-     * @return the difference between this and the other date.
-     */
     public int daysSince(DayDate other){
         return getOrdinalDay() - other.getOrdinalDay();
     }
 
-    /**
-     * Returns true if this SerialDate represents the same date as the 
-     * specified SerialDate.
-     *
-     * @param other  the date being compared to.
-     *
-     * @return <code>true</code> if this SerialDate represents the same date as 
-     *         the specified SerialDate.
-     */
     public boolean isOn(DayDate other){
         return (getOrdinalDay() == other.getOrdinalDay());
     }
 
-    /**
-     * Returns true if this SerialDate represents an earlier date compared to
-     * the specified SerialDate.
-     *
-     * @param other  The date being compared to.
-     *
-     * @return <code>true</code> if this SerialDate represents an earlier date 
-     *         compared to the specified SerialDate.
-     */
     public boolean isBefore(DayDate other){
         return (getOrdinalDay() < other.getOrdinalDay());
     }
 
-    /**
-     * Returns true if this SerialDate represents the same date as the 
-     * specified SerialDate.
-     *
-     * @param other  the date being compared to.
-     *
-     * @return <code>true</code> if this SerialDate represents the same date
-     *         as the specified SerialDate.
-     */
     public boolean isOnOrBefore(DayDate other){
         return (getOrdinalDay() <= other.getOrdinalDay());
     }
 
-    /**
-     * Returns true if this SerialDate represents the same date as the 
-     * specified SerialDate.
-     *
-     * @param other  the date being compared to.
-     *
-     * @return <code>true</code> if this SerialDate represents the same date
-     *         as the specified SerialDate.
-     */
     public boolean isAfter(DayDate other){
         return (getOrdinalDay() > other.getOrdinalDay());
     }
 
-    /**
-     * Returns true if this SerialDate represents the same date as the 
-     * specified SerialDate.
-     *
-     * @param other  the date being compared to.
-     *
-     * @return <code>true</code> if this SerialDate represents the same date
-     *         as the specified SerialDate.
-     */
     public boolean isOnOrAfter(DayDate other) {
         return (getOrdinalDay()>= other.getOrdinalDay());
     }
 
-    /**
-     * Returns <code>true</code> if this {@link DayDate} is within the 
-     * specified range (INCLUSIVE).  The date order of d1 and d2 is not 
-     * important.
-     *
-     * @param d1  a boundary date for the range.
-     * @param d2  the other boundary date for the range.
-     *
-     * @return A boolean.
-     */
     public boolean isInRange(DayDate d1, DayDate d2){
         return isInRange(d1, d2, DateInterval.CLOSED);
     }
 
-    /**
-     * Returns <code>true</code> if this {@link DayDate} is within the 
-     * specified range (caller specifies whether or not the end-points are 
-     * included).  The date order of d1 and d2 is not important.
-     *
-     * @param d1  a boundary date for the range.
-     * @param d2  the other boundary date for the range.
-     * @param interval  a code that controls whether or not the start and end 
-     *                 dates are included in the range.
-     *
-     * @return A boolean.
-     */
     public boolean isInRange(DayDate d1, DayDate d2, DateInterval interval) {
         int left = Math.min(d1.getOrdinalDay(), d2.getOrdinalDay());
         int right = Math.max(d1.getOrdinalDay(), d2.getOrdinalDay());
