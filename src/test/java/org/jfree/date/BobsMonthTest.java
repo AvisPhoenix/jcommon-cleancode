@@ -18,7 +18,7 @@ public class BobsMonthTest extends TestCase{
         assertEquals(4, Month.DECEMBER.quarter());
 
         try {
-            Month.make(-1);
+            Month.fromInt(-1);
             fail("Invalid Month Code should throw exception");
         } catch (IllegalArgumentException e) {
         }
@@ -52,7 +52,7 @@ public class BobsMonthTest extends TestCase{
         assertEquals("Dec", Month.DECEMBER.toShortString());
 
         try {
-            Month.make(-1);
+            Month.fromInt(-1);
             fail("Invalid month code should throw exception");
         } catch (IllegalArgumentException e) {
         }

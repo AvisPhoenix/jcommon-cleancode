@@ -299,7 +299,7 @@ public class SpreadsheetDateTest extends TestCase {
      */
     public void testSerialization() {
 
-        final SpreadsheetDate d1 = new SpreadsheetDate(15, Month.make(4), 2000);
+        final SpreadsheetDate d1 = new SpreadsheetDate(15, Month.fromInt(4), 2000);
         SpreadsheetDate d2 = null;
 
         try {
@@ -324,7 +324,7 @@ public class SpreadsheetDateTest extends TestCase {
      * Some checks for the getDescription() method.
      */
     public void testGetDescription() {
-        SpreadsheetDate d1 = new SpreadsheetDate(15, Month.make(4), 2000);
+        SpreadsheetDate d1 = new SpreadsheetDate(15, Month.fromInt(4), 2000);
         assertEquals(null, d1.getDescription());
         d1.setDescription("XYZ");
         assertEquals("XYZ", d1.getDescription());
@@ -334,7 +334,7 @@ public class SpreadsheetDateTest extends TestCase {
      * Some checks for the setDescription() method.
      */
     public void testSetDescription() {
-        SpreadsheetDate d1 = new SpreadsheetDate(15, Month.make(4), 2000);
+        SpreadsheetDate d1 = new SpreadsheetDate(15, Month.fromInt(4), 2000);
         assertEquals(null, d1.getDescription());
         d1.setDescription("XYZ");
         assertEquals("XYZ", d1.getDescription());

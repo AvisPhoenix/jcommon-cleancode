@@ -175,7 +175,7 @@ public class SerialDateChooserPanel extends JPanel implements ActionListener {
     public void setDate(final DayDate date) {
 
         this.date = date;
-        this.monthSelector.setSelectedIndex(date.getMonth().index - 1);
+        this.monthSelector.setSelectedIndex(date.getMonth().toInt() - 1);
         refreshYearSelector();
         refreshButtons();
 
@@ -200,7 +200,7 @@ public class SerialDateChooserPanel extends JPanel implements ActionListener {
         if (e.getActionCommand().equals("monthSelectionChanged")) {
             final JComboBox c = (JComboBox) e.getSource();
             this.date = DayDateFactory.makeDate(
-                this.date.getDayOfMonth(), Month.make(c.getSelectedIndex() + 1), this.date.getYear()
+                this.date.getDayOfMonth(), Month.fromInt(c.getSelectedIndex() + 1), this.date.getYear()
             );
             refreshButtons();
         }

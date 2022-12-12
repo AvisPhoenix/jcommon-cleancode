@@ -95,7 +95,7 @@ public class SerialDateTest extends TestCase {
      */
     public void testAddMonthsTo9Nov2001() {
         final DayDate jan9Y2002 = this.nov9Y2001.plusMonths(2);
-        final DayDate answer = DayDateFactory.makeDate(9, Month.make(1), 2002);
+        final DayDate answer = DayDateFactory.makeDate(9, Month.fromInt(1), 2002);
         assertEquals(answer, jan9Y2002);
     }
 
@@ -259,7 +259,7 @@ public class SerialDateTest extends TestCase {
      */
     public void testSerialization() {
 
-        DayDate d1 = DayDateFactory.makeDate(15, Month.make(4), 2000);
+        DayDate d1 = DayDateFactory.makeDate(15, Month.fromInt(4), 2000);
         DayDate d2 = null;
 
         try {
@@ -283,9 +283,9 @@ public class SerialDateTest extends TestCase {
      * A test for bug report 1096282 (now fixed).
      */
     public void test1096282() {
-        DayDate d = DayDateFactory.makeDate(29, Month.make(2), 2004);
+        DayDate d = DayDateFactory.makeDate(29, Month.fromInt(2), 2004);
         d = d.plusYears(1);
-        DayDate expected = DayDateFactory.makeDate(28, Month.make(2), 2005);
+        DayDate expected = DayDateFactory.makeDate(28, Month.fromInt(2), 2005);
         assertTrue(d.isOn(expected));
     }
 
@@ -293,11 +293,11 @@ public class SerialDateTest extends TestCase {
      * Miscellaneous tests for the addMonths() method.
      */
     public void testAddMonths() {
-        DayDate d1 = DayDateFactory.makeDate(31, Month.make(5), 2004);
+        DayDate d1 = DayDateFactory.makeDate(31, Month.fromInt(5), 2004);
         
         DayDate d2 = d1.plusMonths(1);
         assertEquals(30, d2.getDayOfMonth());
-        assertEquals(6, d2.getMonth().index);
+        assertEquals(6, d2.getMonth().toInt());
         assertEquals(2004, d2.getYear());
         
         DayDate d3 = d1.plusMonths(2);
@@ -307,7 +307,7 @@ public class SerialDateTest extends TestCase {
         
         DayDate d4 = d1.plusMonths(1).plusMonths(1);
         assertEquals(30, d4.getDayOfMonth());
-        assertEquals(7, d4.getMonth().index);
+        assertEquals(7, d4.getMonth().toInt());
         assertEquals(2004, d4.getYear());
     }
 }

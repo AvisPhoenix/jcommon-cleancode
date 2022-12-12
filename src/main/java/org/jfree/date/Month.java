@@ -20,7 +20,7 @@ public enum Month {
         this.index = index;
     }
 
-    public static Month make(int monthIndex) {
+    public static Month fromInt(int monthIndex) {
         for (Month m : Month.values()) {
             if (m.index == monthIndex)
                 return m;
@@ -28,7 +28,7 @@ public enum Month {
         throw new IllegalArgumentException("Invalid month index " + monthIndex);
     }
 
-    public final int index;
+    private final int index;
 
     private static DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
 
@@ -53,7 +53,7 @@ public enum Month {
             if (m.matches(s))
                 return m;
         try {
-            return make(Integer.parseInt(s));
+            return fromInt(Integer.parseInt(s));
         } catch (Exception e) {
             throw new IllegalArgumentException("Invalid month " + s);
         }
@@ -72,4 +72,7 @@ public enum Month {
         return LAST_DAY_OF_MONTH[index];
     }
     
+    public int toInt() {
+        return index;
+    }
 }

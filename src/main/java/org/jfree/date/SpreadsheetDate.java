@@ -147,7 +147,7 @@ public class SpreadsheetDate extends DayDate {
         }
 
         // the serial number needs to be synchronised with the day-month-year...
-        this.serial = calcSerial(day, month.index, year);
+        this.serial = calcSerial(day, month.toInt(), year);
 
     }
 
@@ -159,7 +159,7 @@ public class SpreadsheetDate extends DayDate {
      * @param year  the year (in the range 1900 to 9999).
      */
     public SpreadsheetDate(final int day, final int month, final int year) {
-        this(day,Month.make(month), year);
+        this(day,Month.fromInt(month), year);
     }
 
     /**
@@ -217,11 +217,11 @@ public class SpreadsheetDate extends DayDate {
           mm = mm + 1;
           sss = ss2 + daysToEndOfPrecedingMonth[mm] - 1;
       }
-      this.month = Month.make(mm - 1);
+      this.month = Month.fromInt(mm - 1);
 
       // what's left is d(+1);
       this.day = this.serial - ss2 
-                 - daysToEndOfPrecedingMonth[this.month.index] + 1;
+                 - daysToEndOfPrecedingMonth[this.month.toInt()] + 1;
 
     }
 
@@ -350,7 +350,7 @@ public class SpreadsheetDate extends DayDate {
     private int calcSerial(final int d, final int m, final int y) {
         final int yy = ((y - 1900) * 365) + DayUtil.leapYearCount(y - 1);
         int mm = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m];
-        if (m > Month.FEBRUARY.index) {
+        if (m > Month.FEBRUARY.toInt()) {
             if (DayUtil.isLeapYear(y)) {
                 mm = mm + 1;
             }
