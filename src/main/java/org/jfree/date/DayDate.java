@@ -309,7 +309,9 @@ public abstract class DayDate implements Comparable,
      *
      * @return the difference between this and the other date.
      */
-    public abstract int compare(DayDate other);
+    public int daysSince(DayDate date){
+        return getOrdinalDay() - date.getOrdinalDay();
+    }
 
     /**
      * Returns true if this SerialDate represents the same date as the 

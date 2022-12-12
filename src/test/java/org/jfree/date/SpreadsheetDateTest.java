@@ -342,4 +342,20 @@ public class SpreadsheetDateTest extends TestCase {
         assertEquals(null, d1.getDescription());
     }
 
+    
+    public void testDaysSince() throws Exception {
+        SpreadsheetDate d1 = new SpreadsheetDate(14, Month.DECEMBER, 2022);
+
+        assertEquals(-1, d1.daysSince(new SpreadsheetDate(15, Month.DECEMBER, 2022)));
+        assertEquals(0, d1.daysSince(new SpreadsheetDate(14, Month.DECEMBER, 2022)));
+        assertEquals(1, d1.daysSince(new SpreadsheetDate(13, Month.DECEMBER, 2022)));
+
+        assertEquals(-7, d1.daysSince(new SpreadsheetDate(21, Month.DECEMBER, 2022)));
+        assertEquals(7, d1.daysSince(new SpreadsheetDate(7, Month.DECEMBER, 2022)));
+
+        assertEquals(-365, d1.daysSince(new SpreadsheetDate(14, Month.DECEMBER, 2023)));
+        assertEquals(1597 , d1.daysSince(new SpreadsheetDate(31, Month.JULY, 2018)));
+        assertEquals(-6586 , d1.daysSince(new SpreadsheetDate(25, Month.DECEMBER, 2040)));
+    }
+
 }
