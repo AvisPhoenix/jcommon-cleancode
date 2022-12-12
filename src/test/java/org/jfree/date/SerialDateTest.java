@@ -209,49 +209,49 @@ public class SerialDateTest extends TestCase {
      * 1900 is not a leap year.
      */
     public void testIsNotLeapYear1900() {
-        assertTrue(!DayDate.isLeapYear(1900));
+        assertTrue(!DayUtil.isLeapYear(1900));
     }
 
     /**
      * 2000 is a leap year.
      */
     public void testIsLeapYear2000() {
-        assertTrue(DayDate.isLeapYear(2000));
+        assertTrue(DayUtil.isLeapYear(2000));
     }
 
     /**
      * The number of leap years from 1900 up-to-and-including 1899 is 0.
      */
     public void testLeapYearCount1899() {
-        assertEquals(SpreadsheetDate.leapYearCount(1899), 0);
+        assertEquals(DayUtil.leapYearCount(1899), 0);
     }
 
     /**
      * The number of leap years from 1900 up-to-and-including 1903 is 0.
      */
     public void testLeapYearCount1903() {
-        assertEquals(SpreadsheetDate.leapYearCount(1903), 0);
+        assertEquals(DayUtil.leapYearCount(1903), 0);
     }
 
     /**
      * The number of leap years from 1900 up-to-and-including 1904 is 1.
      */
     public void testLeapYearCount1904() {
-        assertEquals(SpreadsheetDate.leapYearCount(1904), 1);
+        assertEquals(DayUtil.leapYearCount(1904), 1);
     }
 
     /**
      * The number of leap years from 1900 up-to-and-including 1999 is 24.
      */
     public void testLeapYearCount1999() {
-        assertEquals(SpreadsheetDate.leapYearCount(1999), 24);
+        assertEquals(DayUtil.leapYearCount(1999), 24);
     }
 
     /**
      * The number of leap years from 1900 up-to-and-including 2000 is 25.
      */
     public void testLeapYearCount2000() {
-        assertEquals(SpreadsheetDate.leapYearCount(2000), 25);
+        assertEquals(DayUtil.leapYearCount(2000), 25);
     }
 
     /**

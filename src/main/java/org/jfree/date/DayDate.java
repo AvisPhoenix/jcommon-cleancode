@@ -64,36 +64,6 @@ public abstract class DayDate implements Comparable,
     private String description;
 
     /**
-     * Determines whether or not the specified year is a leap year.
-     *
-     * @param year  the year (in the range 1900 to 9999).
-     *
-     * @return <code>true</code> if the specified year is a leap year.
-     */
-    public static boolean isLeapYear(int year) {
-        boolean fourth = year % 4 == 0;
-        boolean hundredth = year % 100 == 0;
-        boolean fourHundredth = year % 400 == 0;
-        return fourth && (!hundredth || fourHundredth);
-    }
-
-    /**
-     * Returns the number of the last day of the month, taking into account 
-     * leap years.
-     *
-     * @param month  the month.
-     * @param year  the year (in the range 1900 to 9999).
-     *
-     * @return the number of the last day of the month.
-     */
-    public static int lastDayOfMonth(Month month, int year) {
-        if (month == Month.FEBRUARY && DayDate.isLeapYear(year))
-            return month.lastDay() + 1;
-        else
-            return month.lastDay();
-    }
-
-    /**
      * Creates a new date by adding the specified number of days to the base 
      * date.
      *
@@ -121,7 +91,7 @@ public abstract class DayDate implements Comparable,
         int resultMonthAsOrdinal = thisMonthAsOrdinal + months;
         int resultYear = resultMonthAsOrdinal / 12;
         Month resultMonth = Month.make(resultMonthAsOrdinal % 12 + 1);
-        int lastDayOfResultMonth = lastDayOfMonth(resultMonth, resultYear);
+        int lastDayOfResultMonth = DayUtil.lastDayOfMonth(resultMonth, resultYear);
         int resultDay = Math.min(getDayOfMonth(), lastDayOfResultMonth);
 
         return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
@@ -137,7 +107,7 @@ public abstract class DayDate implements Comparable,
      */
     public DayDate plusYears(int years) {
         int resultYear = getYear() + years;
-        int lastDayOfMonthInResultYear = lastDayOfMonth(getMonth(), resultYear);
+        int lastDayOfMonthInResultYear = DayUtil.lastDayOfMonth(getMonth(), resultYear);
         int resultDay = Math.min(getDayOfMonth(), lastDayOfMonthInResultYear);
         
         return DayDateFactory.makeDate(resultDay, getMonth(), resultYear);
@@ -203,7 +173,7 @@ public abstract class DayDate implements Comparable,
     public DayDate getEndOfMonth() {
         Month month = getMonth();
         int year = getYear();
-        int lastDay = lastDayOfMonth(month, year);
+        int lastDay = DayUtil.lastDayOfMonth(month, year);
 
         return DayDateFactory.makeDate(lastDay, month, year);
     }

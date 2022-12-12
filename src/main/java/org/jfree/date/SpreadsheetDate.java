@@ -139,7 +139,7 @@ public class SpreadsheetDate extends DayDate {
 
         this.month = month;
 
-        if ((day >= 1) && (day <= DayDate.lastDayOfMonth(month, year))) {
+        if ((day >= 1) && (day <= DayUtil.lastDayOfMonth(month, year))) {
             this.day = day;
         }
         else {
@@ -183,7 +183,7 @@ public class SpreadsheetDate extends DayDate {
       final int days = this.serial - EARLIEST_DATE_ORDINAL;
       // overestimated because we ignored leap days
       final int overestimatedYYYY = 1900 + (days / 365);
-      final int leaps = SpreadsheetDate.leapYearCount(overestimatedYYYY);
+      final int leaps = DayUtil.leapYearCount(overestimatedYYYY);
       final int nonleapdays = days - leaps;
       // underestimated because we overestimated years
       int underestimatedYYYY = 1900 + (nonleapdays / 365);
@@ -205,7 +205,7 @@ public class SpreadsheetDate extends DayDate {
       int[] daysToEndOfPrecedingMonth 
           = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH;
 
-      if (isLeapYear(this.year)) {
+      if (DayUtil.isLeapYear(this.year)) {
           daysToEndOfPrecedingMonth 
               = LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH;
       }
@@ -222,25 +222,6 @@ public class SpreadsheetDate extends DayDate {
       // what's left is d(+1);
       this.day = this.serial - ss2 
                  - daysToEndOfPrecedingMonth[this.month.index] + 1;
-
-    }
-
-    /**
-     * Returns the number of leap years from 1900 to the specified year 
-     * INCLUSIVE.
-     * <P>
-     * Note that 1900 is not a leap year.
-     *
-     * @param yyyy  the year (in the range 1900 to 9999).
-     *
-     * @return the number of leap years from 1900 to the specified year.
-     */
-    public static int leapYearCount(int yyyy) {
-
-        int leap4 = (yyyy - 1896) / 4;
-        int leap100 = (yyyy - 1800) / 100;
-        int leap400 = (yyyy - 1600) / 400;
-        return leap4 - leap100 + leap400;
 
     }
 
@@ -367,10 +348,10 @@ public class SpreadsheetDate extends DayDate {
      * @return the serial number from the day, month and year.
      */
     private int calcSerial(final int d, final int m, final int y) {
-        final int yy = ((y - 1900) * 365) + SpreadsheetDate.leapYearCount(y - 1);
+        final int yy = ((y - 1900) * 365) + DayUtil.leapYearCount(y - 1);
         int mm = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m];
         if (m > Month.FEBRUARY.index) {
-            if (SpreadsheetDate.isLeapYear(y)) {
+            if (DayUtil.isLeapYear(y)) {
                 mm = mm + 1;
             }
         }
