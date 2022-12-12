@@ -42,25 +42,22 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 /**
- * <pre>
- *  An abstract class that defines our requirements for manipulating dates,
- *  without tying down a particular implementation.
- * 
- *  Requirement 1 : match at least what Excel does for dates;
- *  Requirement 2 : the date represented by the class is immutable;
-
- *  Why not just use java.util.Date?  We will, when it makes sense.  At times,
- *  java.util.Date can be *too* precise - it represents an instant in time,
- *  accurate to 1/1000th of a second (with the date itself depending on the
- *  time-zone).  Sometimes we just want to represent a particular day (e.g. 21
- *  January 2015) without concerning ourselves about the time of day, or the
- *  time-zone, or anything else.  That's what we've defined SerialDate for.
+ * An abstract class that represents immutable dates with a precision of
+ * one day. The implementation will map each date to an integer that
+ * represents an ordinal number of days from some fixed origin.
  *
- *  You can call getInstance() to get a concrete subclass of SerialDate,
- *  without worrying about the exact implementation.
- * </pre>
+ * Why not just use java.util.Date? We will, when it makes sense. At times,
+ * java.util.Date can be *too* precise - it represents an instant in time,
+ * accurate to 1/1000th of a second (with the date itself depending on the
+ * time-zone). Sometimes we just want to represent a particular day (e.g. 21
+ * January 2015) without concerning ourselves about the time of day, or the
+ * time-zone, or anything else. That's what we've defined DayDate for.
+ *
+ * Use DayDateFactory.makeDate to create an instance.
+ *
  * @author David Gilbert
- */
+ * @author Robert C. Martin did a lot of refactoring.
+*/
 public abstract class DayDate implements Comparable, 
                                          Serializable {
 
@@ -399,12 +396,16 @@ public abstract class DayDate implements Comparable,
      *
      * @param d1  a boundary date for the range.
      * @param d2  the other boundary date for the range.
-     * @param include  a code that controls whether or not the start and end 
+     * @param interval  a code that controls whether or not the start and end 
      *                 dates are included in the range.
      *
      * @return A boolean.
      */
-    public abstract boolean isInRange(DayDate d1, DayDate d2, 
-                                      DateInterval include);
+    public boolean isInRange(DayDate d1, DayDate d2, DateInterval interval) {
+        int left = Math.min(d1.getOrdinalDay(), d2.getOrdinalDay());
+        int right = Math.max(d1.getOrdinalDay(), d2.getOrdinalDay());
+
+        return interval.isIn(getOrdinalDay(), left, right);
+    }
 
 }
