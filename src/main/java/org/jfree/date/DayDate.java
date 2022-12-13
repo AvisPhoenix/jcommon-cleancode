@@ -86,22 +86,28 @@ public abstract class DayDate implements Comparable,
     }
 
     public DayDate plusMonths( int months ) {
-        int thisMonthAsOrdinal = 12 * getYear() + getMonth().toInt() - 1;
-        int resultMonthAsOrdinal = thisMonthAsOrdinal + months;
-        int resultYear = resultMonthAsOrdinal / 12;
-        Month resultMonth = Month.fromInt(resultMonthAsOrdinal % 12 + 1);
-        int lastDayOfResultMonth = DayUtil.lastDayOfMonth(resultMonth, resultYear);
-        int resultDay = Math.min(getDayOfMonth(), lastDayOfResultMonth);
+        int thisMonthAsOrdinal = getMonth().toInt() - Month.JANUARY.toInt();
+        int thisMonthAndYearAsOrdinal = 12 * getYear() + thisMonthAsOrdinal;
+        int resultMonthAndYearAsOrdinal = thisMonthAndYearAsOrdinal + months;
+        int resultYear = resultMonthAndYearAsOrdinal / 12;
+        int resultMonthAsOrdinal = resultMonthAndYearAsOrdinal % 12 + Month.JANUARY.toInt();
+        Month resultMonth = Month.fromInt(resultMonthAsOrdinal);
+        int resultDay = correctLastDayOfMonth(getDayOfMonth(), resultMonth, resultYear);
 
         return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
     }
 
     public DayDate plusYears(int years) {
         int resultYear = getYear() + years;
-        int lastDayOfMonthInResultYear = DayUtil.lastDayOfMonth(getMonth(), resultYear);
-        int resultDay = Math.min(getDayOfMonth(), lastDayOfMonthInResultYear);
-        
+        int resultDay = correctLastDayOfMonth(getDayOfMonth(), getMonth(), resultYear);
         return DayDateFactory.makeDate(resultDay, getMonth(), resultYear);
+    }
+
+    private int correctLastDayOfMonth(int day, Month month, int year) {
+        int lastDayOfMonth = DayUtil.lastDayOfMonth(month, year);
+        if (day > lastDayOfMonth)
+            day = lastDayOfMonth;
+        return day;
     }
 
     public DayDate getPreviousDayOfWeek(Day targetDayOfWeek) {
